@@ -8,19 +8,27 @@ class Building{
     
     int[] coordinates;
     Road[] surroundingRoads;
-    Object contained;
+    Stationary contained;
 
-    public Building(int[] coords, Object contained){
+/*     public Building(int[] coords, Stationary contained){
         this.coordinates = coords;
         this.contained = contained;
     }
 
-    public Building(int x, int y, Object contained){
+    public Building(int x, int y, Stationary contained){
         this.coordinates = new int[2];
         coordinates[0] = x;
         coordinates[1] = y;
 
         this.contained = contained;
+    } */
+
+    public Building(int x, int y){
+        this.coordinates = new int[2];
+        coordinates[0] = x;
+        coordinates[1] = y;
+
+        this.contained = null;
     }
 
     public void setRoads(Road[] roads){
@@ -35,8 +43,4 @@ class Building{
         this.surroundingRoads[2] = road3;
         this.surroundingRoads[3] = road4;
     }
-    // city büyüyemeyeceği için array kullanmak daha kolay
-    /* public static buildCity(){
-
-    } */
 }

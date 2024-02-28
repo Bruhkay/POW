@@ -1,6 +1,9 @@
 package entity.stationary;
 import entity.entity;
 
-public abstract class stationary extends entity {
+public abstract class Stationary extends entity {
     
+    int[] coordinates;
+    Road[] surroundingRoads;
+
 }
