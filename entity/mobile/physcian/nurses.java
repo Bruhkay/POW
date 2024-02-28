@@ -1,5 +1,7 @@
+package entity.mobile.physcian;
 import java.util.ArrayList;
 
+import entity.mobile.mobile;
 import med.medicine;
 
 public class nurses extends mobile {

@@ -1,3 +1,6 @@
+package entity.stationary.patients;
+import entity.stationary.stationary;
+
 public class patients extends stationary {
     protected String name;
 
