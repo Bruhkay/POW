@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import med.medicine;
+
 public class nurses extends mobile {
     
     protected ArrayList<medicine> baggage = new ArrayList<medicine>();
