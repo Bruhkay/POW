@@ -1,4 +1,6 @@
 package med;
+
+import entity.*;
 /**
  * medicine
  */
