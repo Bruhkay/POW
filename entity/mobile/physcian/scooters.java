@@ -1,9 +1,9 @@
 package entity.mobile.physcian;
-public class scooters extends nurses {
+public class Scooters extends Nurses {
     
     final protected int speed = 5;
 
-    public scooters(){
+    public Scooters(){
         super();
     }
 }

@@ -1,7 +1,7 @@
 package entity.stationary;
-public class pharmacy extends stationary {
+public class Pharmacy extends Stationary {
     protected String name;
-    public pharmacy(String name){
+    public Pharmacy(String name){
         this.name = name; 
         
     }

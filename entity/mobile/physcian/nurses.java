@@ -1,10 +1,10 @@
 package entity.mobile.physcian;
 import java.util.ArrayList;
 
-import entity.mobile.mobile;
+import entity.mobile.Mobile;
 import med.medicine;
 
-public class nurses extends mobile {
+public class Nurses extends Mobile {
     
     protected ArrayList<medicine> baggage = new ArrayList<medicine>();
     

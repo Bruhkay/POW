@@ -1,6 +1,9 @@
 package grid;
 
 import java.util.ArrayList;
+import entity.mobile.*;
+
+import entity.stationary.*;
 
 public class City {
 

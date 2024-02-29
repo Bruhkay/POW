@@ -1,12 +1,12 @@
 package entity.mobile;
-import entity.entity;
+import entity.Entity;
 
-public abstract class mobile extends entity {
+public abstract class Mobile extends Entity {
 
     int[] coordinates;
     // maybe ArrayList for more complicated city arrangements in the future
     // though that would require a rework of a* which is not easy
-    Building[] surroundingBuildings;
+    //Building[] surroundingBuildings;
     //Mobile contained;
 
 /*     public Road(int[] coords, Nurse contained){

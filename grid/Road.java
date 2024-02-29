@@ -8,7 +8,7 @@ class Road {
     // maybe ArrayList for more complicated city arrangements in the future
     // though that would require a rework of a* which is not easy
     Building[] surroundingBuildings;
-    Mobile contained;
+    //Mobile contained;                                                //its abstract!!!   
 
 /*     public Road(int[] coords, Nurse contained){
         this.coordinates = coords;

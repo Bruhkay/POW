@@ -1,12 +1,12 @@
 import java.util.Random;
 import java.util.random.*;
 
-import entity.mobile.physcian.nurses;
-import entity.mobile.physcian.scooters;
+import entity.mobile.physcian.Nurses;
+import entity.mobile.physcian.Scooters;
 import entity.stationary.stationary;
-import entity.stationary.patients.acut;
-import entity.stationary.patients.patients;
-import entity.stationary.patients.periodic;
+import entity.stationary.patients.Acut;
+import entity.stationary.patients.Patients;
+import entity.stationary.patients.Periodic;
 import med.*;
 
 public class main {
@@ -17,14 +17,14 @@ public class main {
         final int executeDuration = 20; //how many seconds loop will continue
         final int updateFreq = 1; //how many seconds require for update 
 
-        patients patient1 = new acut("Mert");
-        patients patient2 = new periodic("Ece");
+        Patients patient1 = new Acut("Mert");
+        Patients patient2 = new Periodic("Ece");
         medicine m1 = new pill("paroş");
         medicine m2 = new pill("lacoste");
         medicine m3 = new serum("lace");
         medicine m4 = new serum("lad");
 
-        nurses melike = new scooters();
+        Nurses melike = new Scooters();
 
         melike.addToBaggage(m1);
         melike.addToBaggage(m2);

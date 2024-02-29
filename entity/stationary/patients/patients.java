@@ -1,16 +1,16 @@
 package entity.stationary.patients;
 import java.util.ArrayList;
 
-import entity.stationary.stationary;
+import entity.stationary.Stationary;
 import med.medicine;
 
-public class patients extends stationary {
+public class Patients extends Stationary {
 
     protected ArrayList<medicine> cart = new ArrayList<medicine>();
 
     protected String name;
 
-    public patients(String name){
+    public Patients(String name){
         this.name = name;
     }
     public String getPatientsName(){

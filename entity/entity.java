@@ -1,4 +1,4 @@
 package entity;
-public abstract class entity {
+public abstract class Entity {
     
 }

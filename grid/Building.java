@@ -1,6 +1,7 @@
 package grid;
 
 import java.util.*;
+import entity.stationary.*;
 
 
 
