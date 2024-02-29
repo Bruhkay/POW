@@ -1,7 +1,7 @@
 package med;
-public class pill extends temperamental{
+public class Pill extends Temperamental{
      
-    public pill(String name){
+    public Pill(String name){
         super(name);
     }
 }

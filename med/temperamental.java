@@ -1,14 +1,14 @@
 
 package med;
 import entity.*;
-public class temperamental extends medicine {
+public class Temperamental extends Medicine {
     protected String name;
     protected int ID = 0;
 
     
 
     
-    public temperamental(String name){
+    public Temperamental(String name){
         this.name = name;
         this.ID = super.ID;
         super.ID++;

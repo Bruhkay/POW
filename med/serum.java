@@ -1,6 +1,6 @@
 package med;
-public class serum extends temperamental {
-    public serum( String name ){
+public class Serum extends Temperamental {
+    public Serum( String name ){
         super(name);
     }
 }

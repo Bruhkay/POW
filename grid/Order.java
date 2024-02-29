@@ -1,6 +1,6 @@
 package grid;
 import java.util.*;
-import med.medicine.*;
+import med.Medicine.*;
 
 public class Order {
     
