@@ -2,11 +2,11 @@ package entity.stationary.patients;
 import java.util.ArrayList;
 
 import entity.stationary.Stationary;
-import med.medicine;
+import med.Medicine;
 
 public class Patients extends Stationary {
 
-    protected ArrayList<medicine> cart = new ArrayList<medicine>();
+    protected ArrayList<Medicine> cart = new ArrayList<Medicine>();
 
     protected String name;
 
@@ -16,16 +16,16 @@ public class Patients extends Stationary {
     public String getPatientsName(){
         return this.name;
     }
-    public void addMedicine(medicine x){
+    public void addMedicine(Medicine x){
         cart.add(x);
     }
-    public ArrayList<medicine> getCart(){
+    public ArrayList<Medicine> getCart(){
         return cart;
     }
     public int getCartSize(){
         return cart.size();
     }
     public void setCartNull(){
-        this.cart = new ArrayList<medicine>();
+        this.cart = new ArrayList<Medicine>();
     }
 }
