@@ -1,7 +1,7 @@
 
 package med;
 import entity.*;
-public class temperamental extends medicine {
+public class Temperamental extends medicine {
     protected String name;
     protected int ID = 0;
 

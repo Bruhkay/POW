@@ -32,7 +32,7 @@ public class City {
             roads[width][i] = new Road(width, i);
         }
         for (int i = 0; i < width; i++) {
-            roads[i][height] = new Building(i, height);
+            roads[i][height] = new Road(i, height);
         }
     }
 

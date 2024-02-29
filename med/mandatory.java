@@ -1,8 +1,8 @@
 package med;
-public class mandatory extends medicine{
+public class Mandatory extends medicine{
     protected String name ;
 
-    public mandatory(String name){
+    public Mandatory(String name){
         this.name = name;
     }
 
