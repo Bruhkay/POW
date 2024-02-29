@@ -41,14 +41,14 @@ public class main {
         melike.addToBaggage(m4);
         */
 
-        long count = 0;
+        long count = 0; //this variable will increase each second. this will holds the running time by nanoseconds. And will updated at every 1 second.
         while(count < Math.pow(10, 9) * executeDuration){
             if(count < System.nanoTime()-start){
                 count += Math.pow(10,9) * updateFreq;
 
-                int a = rn.nextInt(3);
-                int k = rn.nextInt(patientList.size());
-                Patients randomPatient = patientList.get(k);
+                int a = rn.nextInt(3); //this will choose operation randomly such as adding medicine or buying medicine
+                int k = rn.nextInt(patientList.size()); //this will create number according to number of patients, randomly
+                Patients randomPatient = patientList.get(k); //thanks to k variable, wee are able to choose patient from the list randomly
 
                 if(a == 0){ // for waiting
                     //i can add a for loop to adjust time amount for waiting
@@ -77,18 +77,15 @@ public class main {
                     }
                 }
 
-                else if(a == 3){
+                else if(a == 3){ //i not decided yet
 
                 }
 
-                else if(a == 4){
+                else if(a == 4){ //i not decided yet
 
                 }
-                
+                System.out.println(count/1000000000 + " days passed");
             }
-        }
-
-        //System.out.println(patient1.getPatientsName() + " asked for these; " +patient1.getCart());
-        
+        }       
     }
 }
