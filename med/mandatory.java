@@ -1,5 +1,5 @@
 package med;
-public class Mandatory extends medicine{
+public class Mandatory extends Medicine{
     protected String name ;
 
     public Mandatory(String name){

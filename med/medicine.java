@@ -4,6 +4,6 @@ import entity.*;
 /**
  * medicine
  */
-public abstract class medicine {
+public abstract class Medicine {
     protected static int ID = 0;
 }

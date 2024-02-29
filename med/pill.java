@@ -1,5 +1,5 @@
 package med;
-public class Pill extends temperamental{
+public class Pill extends Temperamental{
      
     public Pill(String name){
         super(name);

@@ -69,7 +69,7 @@ public class main {
                     int randomMedicine = rn.nextInt(2);
 
                     if(randomMedicine == 0){
-                        temperamental m = new pill("parol");
+                        Temperamental m = new Pill("parol");
                         randomPatient.addMedicine(m);
                         System.out.println(randomPatient.getPatientsName() + " is added "+m.getName()+ " to cart.");
                     }
@@ -78,7 +78,7 @@ public class main {
                         patient1.addMedicine(m);
                         System.out.println(m.getName()+ " is successfully added to cart.");
                     else if(randomMedicine ==1){
-                        temperamental m = new serum("nane");
+                        Temperamental m = new Serum("nane");
                         randomPatient.addMedicine(m);
                         System.out.println(randomPatient.getPatientsName() + " is added "+m.getName()+ " to cart.");
                     }

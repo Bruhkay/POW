@@ -2,22 +2,22 @@ package entity.mobile.physcian;
 import java.util.ArrayList;
 
 import entity.mobile.Mobile;
-import med.medicine;
+import med.Medicine;
 
 public class Nurses extends Mobile {
     
-    protected ArrayList<medicine> baggage = new ArrayList<medicine>();
+    protected ArrayList<Medicine> baggage = new ArrayList<Medicine>();
     
-    public ArrayList<medicine> getBaggage() {
+    public ArrayList<Medicine> getBaggage() {
         return baggage;
     }
-    public void addToBaggage(medicine x) {
+    public void addToBaggage(Medicine x) {
         this.baggage.add(x);
     }
     @Override
     public String toString() {
         String result = "";
-        for (medicine x : baggage){
+        for (Medicine x : baggage){
             result += x;
         }
         return result;
