@@ -2,13 +2,20 @@ package grid;
 
 import java.util.*;
 
-class Road {
+import org.w3c.dom.Node;
+
+import entity.mobile.Mobile;
+
+public class Road {
     
     int[] coordinates;
     // maybe ArrayList for more complicated city arrangements in the future
     // though that would require a rework of a* which is not easy
     Building[] surroundingBuildings;
-    //Mobile contained;                                                //its abstract!!!   
+    Mobile contained;                                                //its abstract!!!   
+    int costFromStart; // Cost from start node to current node
+    int costToFinish; // Heuristic (estimated cost from current node to goal node)
+    Road parent; 
 
 /*     public Road(int[] coords, Nurse contained){
         this.coordinates = coords;
@@ -43,5 +50,40 @@ class Road {
         this.surroundingBuildings[2] = building3;
         this.surroundingBuildings[3] = building4;
     }
+
+    public int totalCost(){
+        return this.costFromStart + this.costToFinish;
+    }
+
+    public Road getParent(){
+        return this.parent;
+    }
+
+    public int[] getCoords(){
+        return this.coordinates;
+    }
+
+    public int getCostFromStart() {
+        return costFromStart;
+    }
+
+    public int getCostToFinish() {
+        return costToFinish;
+    }
+    
+    
+    public void setCostFromStart(int costFromStart) {
+        this.costFromStart = costFromStart;
+    }
+
+    public void setCostToFinish(int costToFinish) {
+        this.costToFinish = costToFinish;
+    }
+
+    public void setParent (Road newParent){
+        this.parent = newParent;
+    }
+
+
 
 } 

@@ -1,4 +1,6 @@
 package entity.mobile;
+
+import grid.*;
 import entity.Entity;
 
 public abstract class Mobile extends Entity {
@@ -7,7 +9,13 @@ public abstract class Mobile extends Entity {
     // maybe ArrayList for more complicated city arrangements in the future
     // though that would require a rework of a* which is not easy
     //Building[] surroundingBuildings;
-    //Mobile contained;
+
+    // Burkay affet
+    Road currentRoad;
+
+    public Road getCurretRoad(){
+        return this.currentRoad;
+    }
 
 /*     public Road(int[] coords, Nurse contained){
         this.coordinates = coords;

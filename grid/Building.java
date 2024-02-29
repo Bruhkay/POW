@@ -44,4 +44,8 @@ class Building{
         this.surroundingRoads[2] = road3;
         this.surroundingRoads[3] = road4;
     }
+
+    public Road getEntrence(){
+        return surroundingRoads[0];
+    }
 }
