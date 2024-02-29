@@ -22,4 +22,10 @@ public class Patients extends Stationary {
     public ArrayList<medicine> getCart(){
         return cart;
     }
+    public int getCartSize(){
+        return cart.size();
+    }
+    public void setCartNull(){
+        this.cart = new ArrayList<medicine>();
+    }
 }
