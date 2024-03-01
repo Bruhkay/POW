@@ -2,6 +2,8 @@ package entity.mobile;
 
 import grid.*;
 import entity.Entity;
+import entity.mobile.physcian.Nurses;
+import grid.*;
 
 public abstract class Mobile extends Entity {
 
@@ -13,24 +15,24 @@ public abstract class Mobile extends Entity {
     // Burkay affet
     Road currentRoad;
 
-    public Road getCurretRoad(){
+    public Road getCurrentRoad(){
         return this.currentRoad;
     }
 
-/*     public Road(int[] coords, Nurse contained){
+    public void Road(int[] coords, Nurses contained){
         this.coordinates = coords;
         this.contained = contained;
     }
 
-    public Road(int x, int y, Nurse contained){
+    public void Road(int x, int y, Nurses contained){
         this.coordinates = new int[2];
         coordinates[0] = x;
         coordinates[1] = y;
 
         this.contained = contained;
     }
- */
-/*     public Road(int x, int y){
+ 
+     public void Road(int x, int y){
         this.coordinates = new int[2];
         coordinates[0] = x;
         coordinates[1] = y;
@@ -50,5 +52,5 @@ public abstract class Mobile extends Entity {
         this.surroundingBuildings[2] = building3;
         this.surroundingBuildings[3] = building4;
     }
- */
+
 }

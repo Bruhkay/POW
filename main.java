@@ -22,6 +22,9 @@ public class main {
         Patients patient1 = new Acut("Mert");
         Patients patient2 = new Periodic("Ece");
         Patients patient3 = new Periodic("Sude");
+        patientList.add(patient1);
+        patientList.add(patient2);
+        patientList.add(patient3);
 
         /*
         Medicine m1 = new Pill("paroş");
@@ -30,9 +33,7 @@ public class main {
         Medicine m4 = new Serum("lad");
         
 
-        patientList.add(patient1);
-        patientList.add(patient2);
-        patientList.add(patient3);
+        
 
         Medicine m1 = new pill("paroş");
         Medicine m2 = new pill("lacoste");
@@ -52,7 +53,7 @@ public class main {
             if(count < System.nanoTime()-start){
                 count += Math.pow(10,9) * updateFreq;
 
-                int a = rn.nextInt(3); //this will choose operation randomly such as adding Medicine or buying Medicine
+                int a = rn.nextInt(3); //this will choose operation randomly such as adding Medicine to cart or buying Medicine
                 int k = rn.nextInt(patientList.size()); //this will create number according to number of patients, randomly
                 Patients randomPatient = patientList.get(k); //thanks to k variable, wee are able to choose patient from the list randomly
 
@@ -68,11 +69,6 @@ public class main {
                         Temperamental m = new Pill("parol");
                         randomPatient.addMedicine(m);
                         System.out.println(randomPatient.getPatientsName() + " added "+m.getName()+ " to cart.");
-                    }
-                    else if(k ==1){
-                        Temperamental m = new Serum("nane");
-                        patient1.addMedicine(m);
-                        System.out.println(m.getName()+ " successfully added to cart.");
                     }
 
                     else if(randomMedicine ==1){
