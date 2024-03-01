@@ -5,7 +5,7 @@ import java.util.*;
 import org.w3c.dom.Node;
 
 import entity.mobile.*;
-
+import entity.mobile.physcian.Nurses;
 import entity.stationary.*;
 
 public class City {
@@ -47,19 +47,20 @@ public class City {
     public int[] findMobile(Building stationary){
         // check what med it is
         // Melike daireler ile bulunacak
+        return null;
     }
 
     public int[] findMobile(int[] coordinates){
         return this.findMobile(buildings[coordinates[0]][coordinates[1]]);
     }
 
-    public List<Road> findPath(Nurse mobile, Building stationary){
+    public List<Road> findPath(Nurses mobile, Building stationary){
         // Create open and closed lists
         List<Road> open = new ArrayList<>();
         Set<Road> closed = new HashSet<>();
 
         // Add start Road to open list
-        open.add(mobile.getCurretRoad);
+        open.add(mobile.getCurrentRoad()); 
 
         // clarify the end road
         Road endRoad = stationary.getEntrence();
