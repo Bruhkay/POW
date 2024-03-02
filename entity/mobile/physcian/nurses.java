@@ -9,7 +9,7 @@ public class Nurses extends Mobile {
     protected ArrayList<Medicine> baggage = new ArrayList<Medicine>();
     
     /**
-     * Give all medicines located in baggage
+     * Give all medicines stored in baggage
      * @return baggage
      */
     public ArrayList<Medicine> getBaggage() {
