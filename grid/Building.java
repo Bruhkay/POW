@@ -5,7 +5,7 @@ import entity.stationary.*;
 
 
 
-class Building{
+public class Building{
     
     int[] coordinates;
     Road[] surroundingRoads;
