@@ -5,7 +5,7 @@ import entity.stationary.*;
 
 
 
-class Building{
+public class Building{  // neden public değildi anlamadım
     
     int[] coordinates;
     Road[] surroundingRoads;
@@ -47,5 +47,9 @@ class Building{
 
     public Road getEntrence(){
         return surroundingRoads[0];
+    }
+
+    public int[] getCoordinates() {
+        return coordinates;
     }
 }
