@@ -1,11 +1,12 @@
-package entity.stationary;
+/* package entity.stationary;
 import entity.Entity;
-import grid.*;
+import grid.Building;
 
-public abstract class Stationary extends Building { 
+public class Stationary extends Building { 
     //bunu buildingden extendlemeliyiz city içindeki metot için
     
     int[] coordinates;
     //Road[] surroundingRoads;
 
 }
+ */

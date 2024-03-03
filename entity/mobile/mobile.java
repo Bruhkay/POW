@@ -14,7 +14,7 @@ public abstract class Mobile extends Entity {
 
     // Burkay affet
     Road containedIn;
-
+/* 
     public Road getCurrentRoad(){
         return this.containedIn;
     }
@@ -52,5 +52,5 @@ public abstract class Mobile extends Entity {
         this.surroundingBuildings[2] = building3;
         this.surroundingBuildings[3] = building4;
     }
-
+ */
 }
