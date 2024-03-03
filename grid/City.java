@@ -6,7 +6,9 @@ import org.w3c.dom.Node;
 
 import entity.mobile.*;
 import entity.mobile.physcian.Nurses;
+import entity.mobile.physcian.Vans;
 import entity.stationary.*;
+import entity.stationary.patients.Periodic;
 
 public class City {
 
@@ -28,8 +30,8 @@ public class City {
         roads = new Road[ width + 1][ height + 1];
         buildings = new Building[ width][ height];
 
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 5; j++) {
                 roads[i][j] = new Road(i, j);
                 buildings[i][j] = new Building(i, j);
             }    
@@ -140,11 +142,11 @@ public class City {
      * @param building
      * @return the coordinates of the given building on the city grid
      */
-    private int[] coordinateFinder(Building building){
+    /* private int[] coordinateFinder(Building building){
         // Atakan building kordinatlarını gönder
         // ayrıca bnu road için de yap
         // HashMap
-    }
+    } */
 
     /**
      * Does the vehicle choosing and sending order
@@ -158,15 +160,87 @@ public class City {
     /**
      * Builds a building at a given coordinate the size and width wanted
      */
-    public Building buildCustomeBuilding(){
+    public Building buildCustomeBuilding(int x, int y, int width, int height, Building buildingInside){
 
+        // hollowing the inside of the wanted building of roads
+        for (int i = x + 1; i < x + width; i++) {
+            for( int j = x + 1; j < x + width; j++){
+                roads[i][j] = null;
+            }
+        }
+
+        // creating and allocating a building to the monstrocity
+        buildings[x][y] = new Building(x, y);
+
+        return buildings[x][y];
     }
 
     /**
      * Creates a map of the city
      */
     public String viewMap(){
+        StringBuilder map = new StringBuilder("");
+        StringBuilder primaryRow = new StringBuilder("");
+        StringBuilder secondaryRow = new StringBuilder("");
 
+        // write an index map to the top
+        for (int i = 0; i < roads.length; i++) {
+            map.append(" " + i + " ");
+        }
+        map.append("\n");
+        
+
+        for (int i = 0; i < roads.length; i++) {
+
+            // write the index to the left for convenience
+            primaryRow.append(" " + i + " ");
+
+            for (int j = 0; j < roads[0].length; j++) {
+                // diplaying vehicle
+                if(roads[i][j].getContained() == null){
+                    primaryRow.append(" . ");
+                }
+                else if(roads[i][j].getContained() instanceof Vans){
+                    primaryRow.append(" V ");
+                }
+                else{
+                    primaryRow.append(" S ");
+                }
+
+                // draw the road rightwards
+                if( i < this.width && roads[i + 1][j] != null){
+                    // WE CAN WRİTE THE TRAFFIC IN THE MİDDLE WİTH f"-{road.traffic}-"
+                    primaryRow.append("---");
+                }
+                
+                // draw the road downward
+                if( j < this.height && roads[i][j + 1] != null){
+                    secondaryRow.append(" | ");
+                }
+
+                // draw the building
+                if( roads[i][j].getEntrenceOf() == null){
+                    secondaryRow.append(" . ");
+                }
+                else if( roads[i][j].getEntrenceOf() instanceof Pharmacy){
+                    secondaryRow.append(" M ");
+                }
+                else if( roads[i][j].getEntrenceOf() instanceof Periodic){
+                    secondaryRow.append(" P ");
+                }
+                else{
+                    secondaryRow.append(" A ");
+                }
+
+            }
+            // append to final map and clear rows
+            map.append(primaryRow + "\n");
+            map.append(secondaryRow + "\n");
+            primaryRow.delete(0, primaryRow.length());
+            secondaryRow.delete(0, secondaryRow.length());
+        }
+
+        return map.toString();
     }
 
 
