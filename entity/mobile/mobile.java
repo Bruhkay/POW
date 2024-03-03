@@ -14,10 +14,11 @@ public abstract class Mobile extends Entity {
 
     // Burkay affet
     Road containedIn;
-/* 
+
     public Road getCurrentRoad(){
         return this.containedIn;
     }
+/* 
 
     public void Road(int[] coords, Nurses contained){
         this.coordinates = coords;

@@ -30,20 +30,20 @@ public class City {
         roads = new Road[ width + 1][ height + 1];
         stationarys = new Stationary[ width][ height];
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 5; j++) {
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
                 roads[i][j] = new Road(i, j);
                 stationarys[i][j] = new Stationary(i, j);
             }    
         }
 
         // since the roads array is one size bigger, we fill in the edges
-        for (int i = 0; i < height + 1; i++) {
+        /* for (int i = 0; i < height + 1; i++) {
             roads[width][i] = new Road(width, i);
         }
         for (int i = 0; i < width; i++) {
             roads[i][height] = new Road(i, height);
-        }
+        } */
     }
 
     public int[] findMobile(Stationary stationary){
@@ -153,9 +153,9 @@ public class City {
      * @param med
      * @param stationary
      */
-    public getOrder(Medicine med, Stationary stationary){
+    /* public getOrder(Medicine med, Stationary stationary){
         // path bulunup order yapılmalı
-    }
+    } */
 
     /**
      * Builds a stationary at a given coordinate the size and width wanted
@@ -184,8 +184,8 @@ public class City {
         StringBuilder secondaryRow = new StringBuilder("");
 
         // write an index map to the top
-        for (int i = 0; i < roads.length; i++) {
-            map.append(" " + i + " ");
+        for (int i = 0; i < roads.length + 1; i++) {
+            map.append("    " + i + " ");
         }
         map.append("\n");
         
@@ -194,11 +194,12 @@ public class City {
 
             // write the index to the left for convenience
             primaryRow.append(" " + i + " ");
+            secondaryRow.append("   ");
 
             for (int j = 0; j < roads[0].length; j++) {
                 // diplaying vehicle
-                if(roads[i][j].getContained() == null){
-                    primaryRow.append(" . ");
+                if(roads[i][j] == null){
+                    primaryRow.append(" N ");
                 }
                 else if(roads[i][j].getContained() instanceof Vans){
                     primaryRow.append(" V ");
@@ -208,7 +209,9 @@ public class City {
                 }
 
                 // draw the road rightwards
-                if( i < this.width && roads[i + 1][j] != null){
+                if( i < this.width
+                 //&& roads[i + 1][j] != null
+                 ){
                     // WE CAN WRİTE THE TRAFFIC IN THE MİDDLE WİTH f"-{road.traffic}-"
                     primaryRow.append("---");
                 }
@@ -219,7 +222,7 @@ public class City {
                 }
 
                 // draw the stationary
-                if( roads[i][j].getEnterenceOf() == null){
+                if( roads[i][j] == null){
                     secondaryRow.append(" . ");
                 }
                 else if( roads[i][j].getEnterenceOf() instanceof Pharmacy){

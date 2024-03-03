@@ -13,12 +13,15 @@ public class Order {
     boolean completed = false;
     ArrayList<int[]> path;
     Medicine carriedMedication;
-    ArrayList<Order> assignedOrders = new ArrayList<Order>();
-    ArrayList<Order> completedOrders = new ArrayList<Order>();
+    public static ArrayList<Order> assignedOrders = new ArrayList<Order>();
+    public static ArrayList<Order> completedOrders = new ArrayList<Order>();
 
     // Mobile orderFiller;   // same issue with above
-    public orderFiller(Mobile nurse, Building stationary){
-
+    public orderFiller(Mobile nurse, Stationary stationary, ArrayList path){
+/*         
+    boolean assigned = false;
+    ArrayList<int[]> path;
+*/
     }
      
     // constructors
