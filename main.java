@@ -16,7 +16,7 @@ public class main {
         ArrayList<Patients> patientList = new ArrayList<Patients>();
         
         long start = System.nanoTime();
-        final int executeDuration = 20; //how many seconds loop will continue
+        final int executeDuration = 40; //how many seconds loop will continue
         final int updateFreq = 1; //how many seconds require for update 
 
         Patients patient1 = new Acut("Mert");
