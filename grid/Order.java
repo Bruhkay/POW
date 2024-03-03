@@ -13,6 +13,8 @@ public class Order {
     boolean completed = false;
     ArrayList<int[]> path;
     Medicine carriedMedication;
+    ArrayList<Order> assignedOrders = new ArrayList<Order>();
+    ArrayList<Order> completedOrders = new ArrayList<Order>();
 
     // Mobile orderFiller;   // same issue with above
     public orderFiller(Mobile nurse, Building stationary){

@@ -5,6 +5,7 @@ import java.util.*;
 import org.w3c.dom.Node;
 
 import entity.mobile.Mobile;
+import entity.stationary.Stationary;
 
 public class Road {
     
