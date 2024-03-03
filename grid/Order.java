@@ -1,6 +1,7 @@
 package grid;
 import java.util.*;
-import med.Medicine.*;
+
+import med.Medicine;
 
 public class Order {
     
@@ -10,6 +11,7 @@ public class Order {
     boolean assigned = false;
     boolean completed = false;
     ArrayList<int[]> path;
+    Medicine carriedMedication;
 
     // Mobile orderFiller;   // same issue with above
 

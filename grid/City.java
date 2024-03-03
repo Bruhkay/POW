@@ -155,7 +155,19 @@ public class City {
         // path bulunup order yapılmalı
     }
 
+    /**
+     * Builds a building at a given coordinate the size and width wanted
+     */
+    public Building buildCustomeBuilding(){
 
+    }
+
+    /**
+     * Creates a map of the city
+     */
+    public String viewMap(){
+
+    }
 
 
 }

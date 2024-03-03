@@ -16,6 +16,9 @@ public class Road {
     int costFromStart; // Cost from start node to current node
     int costToFinish; // Heuristic (estimated cost from current node to goal node)
     Road parent; 
+    Building entrenceOf;
+
+    // melike boolean, constructor içine bina alma ve getter setter
 
 /*     public Road(int[] coords, Nurse contained){
         this.coordinates = coords;

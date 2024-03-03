@@ -13,15 +13,15 @@ public abstract class Mobile extends Entity {
     //Building[] surroundingBuildings;
 
     // Burkay affet
-    Road currentRoad;
+    Road containedIn;
 
     public Road getCurrentRoad(){
-        return this.currentRoad;
+        return this.containedIn;
     }
 
     public void Road(int[] coords, Nurses contained){
         this.coordinates = coords;
-        this.contained = contained;
+        this.containedIn = contained;
     }
 
     public void Road(int x, int y, Nurses contained){
@@ -29,7 +29,7 @@ public abstract class Mobile extends Entity {
         coordinates[0] = x;
         coordinates[1] = y;
 
-        this.contained = contained;
+        this.containedIn = contained;
     }
  
      public void Road(int x, int y){
@@ -37,7 +37,7 @@ public abstract class Mobile extends Entity {
         coordinates[0] = x;
         coordinates[1] = y;
 
-        this.contained = null;
+        this.containedIn = null;
     }
 
     public void setSurroundings(Building[] buildings){
