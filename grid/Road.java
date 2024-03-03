@@ -17,6 +17,7 @@ public class Road {
     int costToFinish; // Heuristic (estimated cost from current node to goal node)
     Road parent; 
     Building entrenceOf;
+    boolean isThereRoad; //if there is no road there might be a building
 
     // melike boolean, constructor içine bina alma ve getter setter
 
@@ -33,6 +34,13 @@ public class Road {
         this.contained = contained;
     }
  */
+    public Road (int x, int y, boolean isThereRoad){
+        this.coordinates = new int[2];
+        coordinates[0] = x;
+        coordinates[1] = y;
+        this.isThereRoad = isThereRoad;
+    }
+
     public Road(int x, int y){
         this.coordinates = new int[2];
         coordinates[0] = x;
@@ -73,6 +81,10 @@ public class Road {
     public int getCostToFinish() {
         return costToFinish;
     }
+
+    public boolean getIsThereRoad(){
+        return isThereRoad;
+    }
     
     
     public void setCostFromStart(int costFromStart) {
@@ -83,10 +95,12 @@ public class Road {
         this.costToFinish = costToFinish;
     }
 
-    public void setParent (Road newParent){
+    public void setParent(Road newParent){
         this.parent = newParent;
     }
 
-
+    public void setRoad(boolean isThereRoad){
+        this.isThereRoad = isThereRoad;
+    }
 
 } 
