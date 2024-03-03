@@ -1,12 +1,10 @@
 package grid;
 import java.util.*;
-
-import entity.mobile.Mobile;
+import entity.mobile.physcian.Nurses;
 import med.Medicine;
 
 public class Order {
     
-    //Medicine med;   // medicine is an abstract class, so we cant initialize 
     int[] startingCord;
     int[] finishingCord;
     boolean assigned = false;
@@ -16,12 +14,12 @@ public class Order {
     public static ArrayList<Order> assignedOrders = new ArrayList<Order>();
     public static ArrayList<Order> completedOrders = new ArrayList<Order>();
 
-    // Mobile orderFiller;   // same issue with above
-    public orderFiller(Mobile nurse, Stationary stationary, ArrayList path){
-/*         
-    boolean assigned = false;
-    ArrayList<int[]> path;
-*/
+    //atakan biz burda pathi array arraylisti yaptık da, biz citydeki 
+    //find pathde road array listi olarak kullandık sıkıntı çıkarmaz mı bu????
+
+    public void orderFiller(Nurses nurse, Stationary stationary, ArrayList<int[]> path){
+        this.assigned = true;
+        this.path = new ArrayList<int[]>();
     }
      
     // constructors
