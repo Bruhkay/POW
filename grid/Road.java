@@ -5,20 +5,19 @@ import java.util.*;
 import org.w3c.dom.Node;
 
 import entity.mobile.Mobile;
-import entity.stationary.Stationary;
 
 public class Road {
     
     int[] coordinates;
     // maybe ArrayList for more complicated city arrangements in the future
     // though that would require a rework of a* which is not easy
-    Building[] surroundingBuildings;
-    Mobile contained;                                                //its abstract!!!   
+    Stationary[] surroundingStationarys;
+    Mobile contained = null;                                                //its abstract!!!   
     int costFromStart; // Cost from start node to current node
     int costToFinish; // Heuristic (estimated cost from current node to goal node)
     Road parent; 
-    Building entrenceOf;
-    boolean isThereRoad; //if there is no road there might be a building
+    Stationary entrenceOf;
+    boolean isThereRoad; //if there is no road there might be a stationary
 
     // melike boolean, constructor içine bina alma ve getter setter
 
@@ -80,23 +79,23 @@ public class Road {
         return contained;
     }
 
-    public Building getEnterenceOf(){
+    public Stationary getEnterenceOf(){
         return entrenceOf;
     }
     
     //setter methods
 
-    public void setSurroundings(Building[] buildings){
-        this.surroundingBuildings = buildings;
+    public void setSurroundings(Stationary[] stationarys){
+        this.surroundingStationarys = stationarys;
     }
 
-    public void setSurroundings(Building building1, Building building2, Building building3, Building building4){
-        this.surroundingBuildings = new Building[4];
+    public void setSurroundings(Stationary stationary1, Stationary stationary2, Stationary stationary3, Stationary stationary4){
+        this.surroundingStationarys = new Stationary[4];
 
-        this.surroundingBuildings[0] = building1;
-        this.surroundingBuildings[1] = building2;
-        this.surroundingBuildings[2] = building3;
-        this.surroundingBuildings[3] = building4;
+        this.surroundingStationarys[0] = stationary1;
+        this.surroundingStationarys[1] = stationary2;
+        this.surroundingStationarys[2] = stationary3;
+        this.surroundingStationarys[3] = stationary4;
     }
 
     public void setCostFromStart(int costFromStart) {
@@ -119,7 +118,7 @@ public class Road {
         this.contained = contained;
     }
 
-    public void setEnteranceOf(Building build){
+    public void setEnteranceOf(Stationary build){
         this.entrenceOf = build;
     }
 } 

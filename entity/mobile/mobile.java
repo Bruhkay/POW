@@ -18,6 +18,7 @@ public abstract class Mobile extends Entity {
     public Road getCurrentRoad(){
         return this.containedIn;
     }
+/* 
 
     public void Road(int[] coords, Nurses contained){
         this.coordinates = coords;
@@ -52,5 +53,5 @@ public abstract class Mobile extends Entity {
         this.surroundingBuildings[2] = building3;
         this.surroundingBuildings[3] = building4;
     }
-
+ */
 }

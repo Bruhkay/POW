@@ -13,7 +13,7 @@ import entity.stationary.patients.Periodic;
 public class City {
 
     Road[][] roads;
-    Building[][] buildings;
+    //Stationary[][] stationarys;
     Mobile[][] mobiles;
     Stationary[][] stationarys;
     ArrayList<Order> orders;
@@ -28,35 +28,35 @@ public class City {
         this.orders = new ArrayList<Order>();
 
         roads = new Road[ width + 1][ height + 1];
-        buildings = new Building[ width][ height];
+        stationarys = new Stationary[ width][ height];
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 5; j++) {
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
                 roads[i][j] = new Road(i, j);
-                buildings[i][j] = new Building(i, j);
+                stationarys[i][j] = new Stationary(i, j);
             }    
         }
 
         // since the roads array is one size bigger, we fill in the edges
-        for (int i = 0; i < height + 1; i++) {
+        /* for (int i = 0; i < height + 1; i++) {
             roads[width][i] = new Road(width, i);
         }
         for (int i = 0; i < width; i++) {
             roads[i][height] = new Road(i, height);
-        }
+        } */
     }
 
-    public int[] findMobile(Building stationary){
+    public int[] findMobile(Stationary stationary){
         // check what med it is
         // Melike daireler ile bulunacak
         return null;
     }
 
     public int[] findMobile(int[] coordinates){
-        return this.findMobile(buildings[coordinates[0]][coordinates[1]]);
+        return this.findMobile(stationarys[coordinates[0]][coordinates[1]]);
     }
 
-    public List<Road> findPath(Nurses mobile, Building stationary){
+    public List<Road> findPath(Nurses mobile, Stationary stationary){
         // Create open and closed lists
         List<Road> open = new ArrayList<>();
         Set<Road> closed = new HashSet<>();
@@ -120,7 +120,7 @@ public class City {
 
                 int tentativeG = current.getCostFromStart() + 1; // Assuming each step has a cost of 1
 
-                if (!open.contains(neighbor) || tentativeG < neighbor.g) {
+                if (!open.contains(neighbor) || tentativeG < neighbor.getCostFromStart()) {
                     neighbor.parent = current;
                     neighbor.setCostFromStart(tentativeG);
                     neighbor.setCostToFinish(calculateHeuristic(neighbor, endRoad));
@@ -139,11 +139,11 @@ public class City {
     }
     
     /**
-     * @param building
-     * @return the coordinates of the given building on the city grid
+     * @param stationary
+     * @return the coordinates of the given stationary on the city grid
      */
-    /* private int[] coordinateFinder(Building building){
-        // Atakan building kordinatlarını gönder
+    /* private int[] coordinateFinder(stationary stationary){
+        // Atakan stationary kordinatlarını gönder
         // ayrıca bnu road için de yap
         // HashMap
     } */
@@ -151,28 +151,28 @@ public class City {
     /**
      * Does the vehicle choosing and sending order
      * @param med
-     * @param building
+     * @param stationary
      */
-    public getOrder(Medicine med, Building building){
+    /* public getOrder(Medicine med, Stationary stationary){
         // path bulunup order yapılmalı
-    }
+    } */
 
     /**
-     * Builds a building at a given coordinate the size and width wanted
+     * Builds a stationary at a given coordinate the size and width wanted
      */
-    public Building buildCustomeBuilding(int x, int y, int width, int height, Building buildingInside){
+    public Stationary buildCustomeStationary(int x, int y, int width, int height, Stationary stationaryInside){
 
-        // hollowing the inside of the wanted building of roads
+        // hollowing the inside of the wanted stationary of roads
         for (int i = x + 1; i < x + width; i++) {
             for( int j = x + 1; j < x + width; j++){
                 roads[i][j] = null;
             }
         }
 
-        // creating and allocating a building to the monstrocity
-        buildings[x][y] = new Building(x, y);
+        // creating and allocating a stationary to the monstrocity
+        stationarys[x][y] = new Stationary(x, y);
 
-        return buildings[x][y];
+        return stationarys[x][y];
     }
 
     /**
@@ -184,8 +184,8 @@ public class City {
         StringBuilder secondaryRow = new StringBuilder("");
 
         // write an index map to the top
-        for (int i = 0; i < roads.length; i++) {
-            map.append(" " + i + " ");
+        for (int i = 0; i < roads.length + 1; i++) {
+            map.append("    " + i + " ");
         }
         map.append("\n");
         
@@ -194,11 +194,12 @@ public class City {
 
             // write the index to the left for convenience
             primaryRow.append(" " + i + " ");
+            secondaryRow.append("   ");
 
             for (int j = 0; j < roads[0].length; j++) {
                 // diplaying vehicle
-                if(roads[i][j].getContained() == null){
-                    primaryRow.append(" . ");
+                if(roads[i][j] == null){
+                    primaryRow.append(" N ");
                 }
                 else if(roads[i][j].getContained() instanceof Vans){
                     primaryRow.append(" V ");
@@ -208,7 +209,9 @@ public class City {
                 }
 
                 // draw the road rightwards
-                if( i < this.width && roads[i + 1][j] != null){
+                if( i < this.width
+                 //&& roads[i + 1][j] != null
+                 ){
                     // WE CAN WRİTE THE TRAFFIC IN THE MİDDLE WİTH f"-{road.traffic}-"
                     primaryRow.append("---");
                 }
@@ -218,14 +221,14 @@ public class City {
                     secondaryRow.append(" | ");
                 }
 
-                // draw the building
-                if( roads[i][j].getEntrenceOf() == null){
+                // draw the stationary
+                if( roads[i][j] == null){
                     secondaryRow.append(" . ");
                 }
-                else if( roads[i][j].getEntrenceOf() instanceof Pharmacy){
+                else if( roads[i][j].getEnterenceOf() instanceof Pharmacy){
                     secondaryRow.append(" M ");
                 }
-                else if( roads[i][j].getEntrenceOf() instanceof Periodic){
+                else if( roads[i][j].getEnterenceOf() instanceof Periodic){
                     secondaryRow.append(" P ");
                 }
                 else{

@@ -5,11 +5,12 @@ import entity.stationary.*;
 
 
 
-public class Building{  // neden public değildi anlamadım
+public class Stationary{
     
     int[] coordinates;
     Road[] surroundingRoads;
     Stationary contained;
+    String inital;
 
 /*     public Building(int[] coords, Stationary contained){
         this.coordinates = coords;
@@ -24,7 +25,7 @@ public class Building{  // neden public değildi anlamadım
         this.contained = contained;
     } */
 
-    public Building(int x, int y){
+    public Stationary(int x, int y){
         this.coordinates = new int[2];
         coordinates[0] = x;
         coordinates[1] = y;
@@ -51,5 +52,13 @@ public class Building{  // neden public değildi anlamadım
 
     public int[] getCoordinates() {
         return coordinates;
+    }
+
+    public void setInitial(String initial){
+        this.inital = initial;
+    }
+
+    public String initialString(){
+        return this.inital;
     }
 }

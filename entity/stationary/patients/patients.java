@@ -1,16 +1,16 @@
 package entity.stationary.patients;
 import java.util.ArrayList;
 
-import entity.stationary.Stationary;
 import med.Medicine;
 
-public class Patients extends Stationary {
+public class Patients extends grid.Stationary {
 
     protected ArrayList<Medicine> cart = new ArrayList<Medicine>();
 
     protected String name;
 
-    public Patients(String name){
+    public Patients(String name, int x, int y){
+        super(x, y);
         this.name = name;
     }
     public String getPatientsName(){
