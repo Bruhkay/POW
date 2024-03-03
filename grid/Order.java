@@ -1,6 +1,7 @@
 package grid;
 import java.util.*;
 
+import entity.mobile.Mobile;
 import med.Medicine;
 
 public class Order {
@@ -14,9 +15,11 @@ public class Order {
     Medicine carriedMedication;
 
     // Mobile orderFiller;   // same issue with above
+    public orderFiller(Mobile nurse, Building stationary){
 
+    }
      
-    // constructor
+    // constructors
     public Order(int[] startingCord, int[] finishingCord, Medicine carriedMedication){
         this.startingCord = startingCord;
         this.finishingCord = finishingCord;
@@ -28,19 +31,42 @@ public class Order {
         this.finishingCord = finishingCord;
     }
 
-    // manifest order path dolacak
-    public manifestOrderPath(){
-
+    // manifest order path dolacak??
+    
+    //getter methods
+    public int[] getStartingCord() {
+        return this.startingCord;
     }
 
-    // fill order
-    
+    public int[] getFinishingCord() {
+        return this.finishingCord;
+    }
+
+    public boolean isAssigned() {
+        return this.assigned;
+    }
+
+    public boolean isCompleted() {
+        return this.completed;
+    }
+
+    public ArrayList<int[]> getPath() {
+        return this.path;
+    }
+
+    public Medicine getCarriedMedication() {
+        return this.carriedMedication;
+    }
+
+    //setter methods
     public void setAssignedOrder(boolean assigned){
         this.assigned = assigned;
+        assignedOrders.add(this);
     }
 
-    public void setCompleteOrder(boolean completed){
+    public void setCompletedOrder(boolean completed){
         this.completed = completed;
+        completedOrders.add(this);
     }
 
 } 

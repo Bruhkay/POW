@@ -49,19 +49,8 @@ public class Road {
         this.contained = null;
     }
 
-    public void setSurroundings(Building[] buildings){
-        this.surroundingBuildings = buildings;
-    }
-
-    public void setSurroundings(Building building1, Building building2, Building building3, Building building4){
-        this.surroundingBuildings = new Building[4];
-
-        this.surroundingBuildings[0] = building1;
-        this.surroundingBuildings[1] = building2;
-        this.surroundingBuildings[2] = building3;
-        this.surroundingBuildings[3] = building4;
-    }
-
+    //getter methods
+    
     public int totalCost(){
         return this.costFromStart + this.costToFinish;
     }
@@ -85,8 +74,30 @@ public class Road {
     public boolean getIsThereRoad(){
         return isThereRoad;
     }
+
+    public Mobile getContained(){
+        return contained;
+    }
+
+    public Building getEnterenceOf(){
+        return entrenceOf;
+    }
     
-    
+    //setter methods
+
+    public void setSurroundings(Building[] buildings){
+        this.surroundingBuildings = buildings;
+    }
+
+    public void setSurroundings(Building building1, Building building2, Building building3, Building building4){
+        this.surroundingBuildings = new Building[4];
+
+        this.surroundingBuildings[0] = building1;
+        this.surroundingBuildings[1] = building2;
+        this.surroundingBuildings[2] = building3;
+        this.surroundingBuildings[3] = building4;
+    }
+
     public void setCostFromStart(int costFromStart) {
         this.costFromStart = costFromStart;
     }
@@ -103,4 +114,11 @@ public class Road {
         this.isThereRoad = isThereRoad;
     }
 
+    public void setContined(Mobile contained){
+        this.contained = contained;
+    }
+
+    public void setEnteranceOf(Building build){
+        this.entrenceOf = build;
+    }
 } 
