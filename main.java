@@ -4,7 +4,6 @@ import java.util.random.*;
 
 import entity.mobile.physcian.Nurses;
 import entity.mobile.physcian.Scooters;
-import entity.stationary.Stationary;
 import entity.stationary.patients.Acut;
 import entity.stationary.patients.Patients;
 import entity.stationary.patients.Periodic;
