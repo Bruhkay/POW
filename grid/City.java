@@ -32,7 +32,7 @@ public class City {
 
         for (int x = 0; x < width + 1; x++) {
             for (int y = 0; y < height + 1; y++) {
-                roads[x][y] = new Road(y,x);
+                roads[x][y] = new Road(x,y);
                 //stationarys[x][y] = new Stationary(x,y);
             }    
         }
@@ -97,7 +97,7 @@ public class City {
         open.add(mobile.getCurrentRoad()); 
 
         // clarify the end road
-        Road endRoad = stationary.getEntrence();
+        Road endRoad = roads[stationary.getCoordinates()[0]][stationary.getCoordinates()[1]];
 
         while (!open.isEmpty()) {
             // Get the Road with the lowest f value from open list
@@ -127,39 +127,41 @@ public class City {
             // Generate neighboring nodes based on grid dimensions and obstacles
             int[] currentSCoords = current.getCoords();
 
-            if( currentSCoords[0] != this.width + 1){
+            if (currentSCoords[0] + 1 <= this.width && roads[currentSCoords[0] + 1][currentSCoords[1]] != null) {
                 neighbors.add(roads[currentSCoords[0] + 1][currentSCoords[1]]);
             }
-
-            if( currentSCoords[0] != 0){
+            
+            if (currentSCoords[0] - 1 >= 0 && roads[currentSCoords[0] - 1][currentSCoords[1]] != null) {
                 neighbors.add(roads[currentSCoords[0] - 1][currentSCoords[1]]);
             }
-
-            if( currentSCoords[1] != this.height + 1){
+            
+            if (currentSCoords[1] + 1 <= this.height && roads[currentSCoords[0]][currentSCoords[1] + 1] != null) {
                 neighbors.add(roads[currentSCoords[0]][currentSCoords[1] + 1]);
             }
-
-            if( currentSCoords[1] != 0){
+            
+            if (currentSCoords[1] - 1 >= 0 && roads[currentSCoords[0]][currentSCoords[1] - 1] != null) {
                 neighbors.add(roads[currentSCoords[0]][currentSCoords[1] - 1]);
             }
+            
 
 
             for (Road neighbor : neighbors) {
-/*                 if (closed.contains(neighbor)) {
+                 if (closed.contains(neighbor)) {
                     continue; // Skip this neighbor, it is already evaluated
                 }
- */
+                else{
 
                 int tentativeG = current.getCostFromStart() + 1; // Assuming each step has a cost of 1
 
                 if (!open.contains(neighbor) || tentativeG < neighbor.getCostFromStart()) {
+                    // yolları doğru deneyerek buluyor aslında ok ama bir yerde iki tane element birbirine parent belirlendiği için rota kayboluyor ve sensuz bir loop a giriyor
                     neighbor.parent = current;
                     neighbor.setCostFromStart(tentativeG);
                     neighbor.setCostToFinish(calculateHeuristic(neighbor, endRoad));
                     if (!open.contains(neighbor)) {
                         open.add(neighbor);
                     }
-                }
+                }}
             }
         }
         return null; // No path found
@@ -172,6 +174,7 @@ public class City {
 
     public void setRoad(Mobile changed, int x, int y){
         roads[x][y].setContined(changed);
+        changed.setContainedIn(roads[x][y]);
     }
 
     public void emptyRoad(int x, int y){
@@ -194,7 +197,7 @@ public class City {
 
         // hollowing the inside of the wanted stationary of roads
         for (int i = x + 1; i < x + width; i++) {
-            for( int j = x + 1; j < x + width; j++){
+            for( int j = x + 1; j < x + height; j++){
                 roads[i][j] = null;
             }
         }

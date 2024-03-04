@@ -18,6 +18,11 @@ public abstract class Mobile extends Entity {
     public Road getCurrentRoad(){
         return this.containedIn;
     }
+
+    public void setContainedIn(Road containedIn) {
+        this.containedIn = containedIn;
+    }
+
 /* 
 
     public void Road(int[] coords, Nurses contained){
