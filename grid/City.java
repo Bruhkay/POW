@@ -30,10 +30,10 @@ public class City {
         roads = new Road[ width + 1][ height + 1];
         stationarys = new Stationary[ width][ height];
 
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                roads[i][j] = new Road(i, j);
-                stationarys[i][j] = new Stationary(i, j);
+        for (int x = 0; x < width + 1; x++) {
+            for (int y = 0; y < height + 1; y++) {
+                roads[x][y] = new Road(x,y);
+                stationarys[x][y] = new Stationary(x,y);
             }    
         }
 
@@ -43,7 +43,7 @@ public class City {
         }
         for (int i = 0; i < width; i++) {
             roads[i][height] = new Road(i, height);
-        } */
+        } */ 
     }
 
     public int[] findMobile(Stationary stationary){
@@ -169,6 +169,10 @@ public class City {
         // Manhattan distance heuristic
         return Math.abs(node.getCoords()[0] - endNode.getCoords()[0]) + Math.abs(node.getCoords()[1] - endNode.getCoords()[1]);
     }
+
+    public void setRoad(Road changed, int x, int y){
+        roads[x][y] = changed;
+    }
     
     /**
      * @param stationary
@@ -229,44 +233,58 @@ public class City {
             secondaryRow.append("   ");
 
             for (int j = 0; j < roads[0].length; j++) {
-                // diplaying vehicle
-                if(roads[i][j] == null){
-                    primaryRow.append(" N ");
-                }
-                else if(roads[i][j].getContained() instanceof Vans){
-                    primaryRow.append(" V ");
+                if( roads[i][j] != null){
+                    // diplaying vehicle
+                    if(roads[i][j].getContained() == null){
+                        primaryRow.append(" " + roads[i][j].getCoords()[0] + " ");
+                    }
+                    else if(roads[i][j].getContained() instanceof Vans){
+                        primaryRow.append(" V ");
+                    }
+                    else{
+                        primaryRow.append(" S ");
+                    }
+
+                    // draw the road rightwards
+                    if( i < this.width + 1
+                    //&& roads[i + 1][j] != null
+                    ){
+                        try {
+                            if( roads[i + 1][j] != null){
+                                primaryRow.append("---");
+                            }
+                            else{
+                                primaryRow.append("   ");
+                            }
+                        } catch (Exception e) {
+                            primaryRow.append("---");
+                        }
+                        // WE CAN WRİTE THE TRAFFIC IN THE MİDDLE WİTH f"-{road.traffic}-"
+                    }
+                    
+                    // draw the road downward
+                    if( j < this.height + 1 && roads[i][j] != null){
+                        secondaryRow.append(" | ");
+                    }
+
+                    // draw the stationary
+                    if( roads[i][j].getEnterenceOf() == null){
+                        secondaryRow.append(" . ");
+                    }
+                    else if( roads[i][j].getEnterenceOf() instanceof Pharmacy){
+                        secondaryRow.append(" M ");
+                    }
+                    else if( roads[i][j].getEnterenceOf() instanceof Periodic){
+                        secondaryRow.append(" P ");
+                    }
+                    else{
+                        secondaryRow.append(" A ");
+                    }
                 }
                 else{
-                    primaryRow.append(" S ");
+                    primaryRow.append("      ");
+                    secondaryRow.append("      ");
                 }
-
-                // draw the road rightwards
-                if( i < this.width
-                 //&& roads[i + 1][j] != null
-                 ){
-                    // WE CAN WRİTE THE TRAFFIC IN THE MİDDLE WİTH f"-{road.traffic}-"
-                    primaryRow.append("---");
-                }
-                
-                // draw the road downward
-                if( j < this.height && roads[i][j + 1] != null){
-                    secondaryRow.append(" | ");
-                }
-
-                // draw the stationary
-                if( roads[i][j] == null){
-                    secondaryRow.append(" . ");
-                }
-                else if( roads[i][j].getEnterenceOf() instanceof Pharmacy){
-                    secondaryRow.append(" M ");
-                }
-                else if( roads[i][j].getEnterenceOf() instanceof Periodic){
-                    secondaryRow.append(" P ");
-                }
-                else{
-                    secondaryRow.append(" A ");
-                }
-
             }
             // append to final map and clear rows
             map.append(primaryRow + "\n");

@@ -2,8 +2,6 @@ package grid;
 
 import java.util.*;
 
-import org.w3c.dom.Node;
-
 import entity.mobile.Mobile;
 
 public class Road {
@@ -16,7 +14,7 @@ public class Road {
     int costFromStart; // Cost from start node to current node
     int costToFinish; // Heuristic (estimated cost from current node to goal node)
     Road parent; 
-    Stationary entrenceOf;
+    Stationary entrenceOf = null;
     boolean isThereRoad; //if there is no road there might be a stationary
 
     // melike boolean, constructor içine bina alma ve getter setter
