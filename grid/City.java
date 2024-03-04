@@ -47,8 +47,40 @@ public class City {
     }
 
     public int[] findMobile(Stationary stationary){
-        // check what med it is
-        // Melike daireler ile bulunacak
+        boolean control = true;
+        int x = stationary.getCoordinates()[0];
+        int y = stationary.getCoordinates()[1];
+        int distance = 1;
+        int[] coord = new int[2];
+        while (control && distance<=this.height && distance<=this.width) {
+            for (int i = 0; i < distance; i++) {
+                if(roads[x+i][y-(distance-i)].getContained() instanceof Nurses){
+                    coord[0]=x+i;
+                    coord[1]=y-(distance-i);
+                    control = false;
+                    return coord;
+                }
+                if(roads[x+i][y+(distance-i)].getContained() instanceof Nurses){
+                    coord[0]=x+i;
+                    coord[1]=y-(distance-i);
+                    control = false;
+                    return coord;
+                }
+                
+                if(roads[x-i][y+(distance-i)].getContained() instanceof Nurses){
+                    coord[0]=x-i;
+                    coord[1]=y+(distance-i);
+                    control = false;
+                    return coord;
+                }
+                if(roads[x-i][y-(distance-i)].getContained() instanceof Nurses){
+                    coord[0]=x-i;
+                    coord[1]=y+(distance-i);
+                    control = false;
+                    return coord;
+                }
+            }
+        }
         return null;
     }
 
