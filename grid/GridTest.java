@@ -23,5 +23,7 @@ public class GridTest {
         List<Road> d = city.findPath((Nurses)a, b);
         System.out.println(city.viewMap());
         System.out.println("a");
+
+        //Mutlulukkk a* a kurban olim
     }
 }
