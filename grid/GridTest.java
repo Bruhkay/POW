@@ -24,7 +24,7 @@ public class GridTest {
 
         List<Road> d = city.findPath((Nurses)a, b);
         System.out.println(city.viewMap(true));
-        System.out.println("a");
+        System.out.println("a"); // bu a neden acaba...gercek bir gizem
 
         //Mutlulukkk a* a kurban olim
     }
