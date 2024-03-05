@@ -18,9 +18,9 @@ public class main {
         final int executeDuration = 40; //how many seconds loop will continue
         final int updateFreq = 1; //how many seconds require for update 
 
-        Patients patient1 = new Acut("Mert", 0, 0); // Coordinates should be updated according to patient's house.
-        Patients patient2 = new Periodic("Ece", 0, 0);
-        Patients patient3 = new Periodic("Sude", 0, 0);
+        Patients patient1 = new Acut("Mert",3,5);
+        Patients patient2 = new Periodic("Ece",6,7);
+        Patients patient3 = new Periodic("Sude",1,1);
         patientList.add(patient1);
         patientList.add(patient2);
         patientList.add(patient3);

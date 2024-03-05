@@ -16,10 +16,45 @@ public class Road {
     Road parent; 
     Stationary entrenceOf = null;
     boolean isThereRoad; //if there is no road there might be a stationary
+    int[] traffic = {1,1};
 
     // melike boolean, constructor içine bina alma ve getter setter
 
-/*     public Road(int[] coords, Nurse contained){
+    public int[] getTraffic() {
+        return traffic;
+    }
+
+    public void setTraffic(int[] traffic) {
+        int max = 100;
+        int min = 0;
+
+        // setting right traffic
+        if( traffic[0] < min){
+            this.traffic[0] = min;
+        }
+        else if( traffic[0] > max){
+            this.traffic[0] = max;
+        }
+        else{
+            this.traffic[0] = this.traffic[0];
+        }
+
+        // setting down traffic
+        if( traffic[1] < min){
+            this.traffic[1] = min;
+        }
+        else if( traffic[1] > max){
+            this.traffic[1] = max;
+        }
+        else{
+            this.traffic[1] = this.traffic[1];
+        }
+
+
+        this.traffic = traffic;
+    }
+
+    /*     public Road(int[] coords, Nurse contained){
         this.coordinates = coords;
         this.contained = contained;
     }
