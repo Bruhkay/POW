@@ -2,25 +2,29 @@ package grid;
 
 import java.util.*;
 
-import org.w3c.dom.Node;
-
 import entity.mobile.*;
 import entity.mobile.physcian.Nurses;
 import entity.mobile.physcian.Vans;
 import entity.stationary.*;
 import entity.stationary.patients.Periodic;
 
+/**
+ * Represents a city grid with roads, mobile entities, and stationary entities.
+ */
 public class City {
 
     Road[][] roads;
-    //Stationary[][] stationarys;
     Mobile[][] mobiles;
     Stationary[][] stationarys;
     ArrayList<Order> orders;
     int width;
     int height;
 
-    // city büyüyemeyeceği için array kullanmak daha kolay
+    /**
+     * Constructs a city grid with the specified width and height.
+     * @param width The width of the city grid.
+     * @param height The height of the city grid.
+     */
     public City(int width, int height){
         this.width = width;
         this.height = height;
@@ -33,19 +37,15 @@ public class City {
         for (int x = 0; x < width + 1; x++) {
             for (int y = 0; y < height + 1; y++) {
                 roads[x][y] = new Road(x,y);
-                //stationarys[x][y] = new Stationary(x,y);
             }    
         }
-
-        // since the roads array is one size bigger, we fill in the edges
-        /* for (int i = 0; i < height + 1; i++) {
-            roads[width][i] = new Road(width, i);
-        }
-        for (int i = 0; i < width; i++) {
-            roads[i][height] = new Road(i, height);
-        } */ 
     }
 
+    /**
+     * Finds a mobile entity nearest to the given stationary entity.
+     * @param stationary The stationary entity to find the nearest mobile to.
+     * @return The coordinates of the nearest mobile entity.
+     */
     public int[] findMobile(Stationary stationary){
         boolean control = true;
         int x = stationary.getCoordinates()[0];
@@ -84,10 +84,21 @@ public class City {
         return null;
     }
 
+    /**
+     * Finds a mobile entity nearest to the given coordinates.
+     * @param coordinates The coordinates to find the nearest mobile to.
+     * @return The coordinates of the nearest mobile entity.
+     */
     public int[] findMobile(int[] coordinates){
         return this.findMobile(stationarys[coordinates[0]][coordinates[1]]);
     }
 
+    /**
+     * Finds the shortest path for a mobile entity to reach a stationary entity.
+     * @param mobile The mobile entity.
+     * @param stationary The stationary entity.
+     * @return The list of roads representing the shortest path.
+     */
     public List<Road> findPath(Nurses mobile, Stationary stationary){
         // Create open and closed lists
         List<Road> open = new ArrayList<>();
@@ -115,6 +126,9 @@ public class City {
                 Road node = current;
                 while (node != null) {
                     path.add(node);
+                    // to show the way taken
+                    int[] a = {0,0};
+                    node.setTraffic(a);
                     node = node.getParent();
                 }
                 Collections.reverse(path);
@@ -151,10 +165,9 @@ public class City {
                 }
                 else{
 
-                int tentativeG = current.getCostFromStart() + 1; // Assuming each step has a cost of 1
+                int tentativeG = current.getCostFromStart() + this.getTrafficBetweenRoads(current, neighbor); 
 
                 if (!open.contains(neighbor) || tentativeG < neighbor.getCostFromStart()) {
-                    // yolları doğru deneyerek buluyor aslında ok ama bir yerde iki tane element birbirine parent belirlendiği için rota kayboluyor ve sensuz bir loop a giriyor
                     neighbor.parent = current;
                     neighbor.setCostFromStart(tentativeG);
                     neighbor.setCostToFinish(calculateHeuristic(neighbor, endRoad));
@@ -175,6 +188,28 @@ public class City {
     public void setRoad(Mobile changed, int x, int y){
         roads[x][y].setContined(changed);
         changed.setContainedIn(roads[x][y]);
+    }
+
+    public int getTrafficBetweenRoads(Road a, Road b){
+        // TODO: Safety net for Roads that may not be adjasent
+        int [] aCoords = a.getCoords();
+        int [] bCoords = b.getCoords();
+
+        if( aCoords[0] < bCoords[0]){
+            return a.getTraffic()[0];
+        }
+        else if( aCoords[0] > bCoords[0]){
+            return b.getTraffic()[0];
+        }
+        else if( aCoords[1] < bCoords[1]){
+            return b.getTraffic()[1];
+        }
+        else if( aCoords[1] > bCoords[1]){
+            return a.getTraffic()[1];
+        }
+        else{
+            return 0;
+        }
     }
 
     public void emptyRoad(int x, int y){
@@ -208,101 +243,121 @@ public class City {
         return stationarys[x][y];
     }
 
+    public Road getRoad(int x, int y){
+        return roads[x][y];
+    }
+
     /**
-     * Creates a map of the city
-     */
-    public String viewMap(){
-        StringBuilder map = new StringBuilder("");
-        StringBuilder primaryRow = new StringBuilder("");
-        StringBuilder secondaryRow = new StringBuilder("");
+ * Creates a map of the city.
+ * @param showTraffic Whether to display traffic information.
+ * @return The map of the city.
+ */
+public String viewMap(boolean showTraffic){
+    StringBuilder map = new StringBuilder("");
+    StringBuilder primaryRow = new StringBuilder("");
+    StringBuilder secondaryRow = new StringBuilder("");
 
-        // write an index map to the top
-        map.append("    ");
+    // write an index map to the top
+    map.append("    ");
+    for (int i = 0; i < roads.length; i++) {
+
+        map.append(new String().format("%-4s  ", "" + i));
+    }
+    map.append("\n");
+    
+
+    for (int j = 0; j < roads[0].length; j++) {
+
+        // write the index to the left for convenience
+        primaryRow.append(new String().format("%3s", "" + j));
+        secondaryRow.append("   ");
+
         for (int i = 0; i < roads.length; i++) {
+            // check if there is a road there at all
+            if( roads[i][j] != null){
+                // displaying vehicle
+                if(roads[i][j].getContained() == null){
+                    primaryRow.append(" . ");
+                }
+                else if(roads[i][j].getContained() instanceof Vans){
+                    primaryRow.append(" V ");
+                }
+                else{
+                    primaryRow.append(" S ");
+                }
 
-            map.append(new String().format("%-4s  ", "" + i));
-        }
-        map.append("\n");
-        
-
-        for (int j = 0; j < roads[0].length; j++) {
-
-            // write the index to the left for convenience
-            primaryRow.append(new String().format("%3s", "" + j));
-            secondaryRow.append("   ");
-
-            for (int i = 0; i < roads.length; i++) {
-                // check if there is a road there at all
-                if( roads[i][j] != null){
-                    // diplaying vehicle
-                    if(roads[i][j].getContained() == null){
-                        primaryRow.append(" . ");
-                    }
-                    else if(roads[i][j].getContained() instanceof Vans){
-                        primaryRow.append(" V ");
-                    }
-                    else{
-                        primaryRow.append(" S ");
-                    }
-
-                    // draw the road rightwards
-                    if( i < this.width
-                    //&& roads[i + 1][j] != null
-                    ){
-                        try {
-                            if( roads[i + 1][j] !=  null){
-                                primaryRow.append("---");
+                // draw the road rightwards
+                if( i < this.width
+                //&& roads[i + 1][j] != null
+                ){
+                    // show the traffic level in format "-traffic-"
+                    try {
+                        if( roads[i + 1][j] !=  null){
+                            if(showTraffic){
+                            primaryRow.append(String.format("-%s-", roads[i][j].getTraffic()[0]));
                             }
                             else{
-                                primaryRow.append("   ");
-                            }
-                        } catch (Exception e) {
+                            // not show traffic
                             primaryRow.append("---");
-                        }
-                        // WE CAN WRİTE THE TRAFFIC IN THE MİDDLE WİTH f"-{road.traffic}-"
-                    }
-                    
-                    // draw the road downward
-                    if( j < this.height && roads[i][j+1] != null){
-                        secondaryRow.append(" | ");
-                    }
-                    else{
-                        secondaryRow.append("   ");
-                    }
-
-                    if(j < this.height && i < this.width)
-                    {    // draw the stationary
-                        if( roads[i][j].getEnterenceOf() == null){
-                            secondaryRow.append(" . ");
-                        }
-                        else if( roads[i][j].getEnterenceOf() instanceof Pharmacy){
-                            secondaryRow.append(" M ");
-                        }
-                        else if( roads[i][j].getEnterenceOf() instanceof Periodic){
-                            secondaryRow.append(" P ");
+                            }
                         }
                         else{
-                            secondaryRow.append(" A ");
+                            primaryRow.append("   ");
                         }
+                    } catch (Exception e) {
+                        primaryRow.append("---");
+                    }
+                    
+                }
+                
+                // draw the road downward
+                if( j < this.height && roads[i][j+1] != null){
+                    if(showTraffic){
+                        // show the traffic level downward
+                        secondaryRow.append(String.format(" |%s", roads[i][j].getTraffic()[1]));
                     }
                     else{
-                        secondaryRow.append("   ");
+                        // not show traffic
+                        secondaryRow.append(" | ");
                     }
                 }
                 else{
-                    primaryRow.append("      ");
-                    secondaryRow.append("      ");
+                    secondaryRow.append("   ");
+                }
+
+                if(j < this.height && i < this.width)
+                {    // draw the stationary
+                    if( roads[i][j].getEnterenceOf() == null){
+                        secondaryRow.append(" . ");
+                    }
+                    else if( roads[i][j].getEnterenceOf() instanceof Pharmacy){
+                        secondaryRow.append(" M ");
+                    }
+                    else if( roads[i][j].getEnterenceOf() instanceof Periodic){
+                        secondaryRow.append(" P ");
+                    }
+                    else{
+                        secondaryRow.append(" A ");
+                    }
+                }
+                else{
+                    secondaryRow.append("   ");
                 }
             }
-            // append to final map and clear rows
-            map.append(primaryRow + "\n");
-            map.append(secondaryRow + "\n");
-            primaryRow.delete(0, primaryRow.length());
-            secondaryRow.delete(0, secondaryRow.length());
+            else{
+                primaryRow.append("      ");
+                secondaryRow.append("      ");
+            }
         }
-
-        return map.toString();
+        // append to final map and clear rows
+        map.append(primaryRow + "\n");
+        map.append(secondaryRow + "\n");
+        primaryRow.delete(0, primaryRow.length());
+        secondaryRow.delete(0, secondaryRow.length());
     }
+
+    return map.toString();
+}
 
 
 }

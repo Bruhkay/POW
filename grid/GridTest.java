@@ -12,16 +12,18 @@ public class GridTest {
 
         City city = new City(10, 10);
         Mobile a = new Vans();
-        city.setRoad(a, 10,1);
+        city.setRoad(a, 7,0);
         Stationary b = new Stationary(9,9);
         city.buildCustomeStationary(9,9, 1,1, b);
-        Stationary Z = new Stationary(3,2);
-        city.buildCustomeStationary(3,2, 8,6, b);
+        Stationary Z = new Stationary(1,1);
+        city.buildCustomeStationary(1,1, 9,6, b);
 
-        city.emptyRoad(9, 4);
+        int[] newTraffic = {10,12};
+        city.getRoad(10, 5).setTraffic(newTraffic);
+
 
         List<Road> d = city.findPath((Nurses)a, b);
-        System.out.println(city.viewMap());
+        System.out.println(city.viewMap(true));
         System.out.println("a");
     }
 }
