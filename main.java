@@ -18,9 +18,9 @@ public class main {
         final int executeDuration = 40; //how many seconds loop will continue
         final int updateFreq = 1; //how many seconds require for update 
 
-        Patients patient1 = new Acut("Mert");
-        Patients patient2 = new Periodic("Ece");
-        Patients patient3 = new Periodic("Sude");
+        Patients patient1 = new Acut("Mert", 0, 0); // Coordinates should be updated according to patient's house.
+        Patients patient2 = new Periodic("Ece", 0, 0);
+        Patients patient3 = new Periodic("Sude", 0, 0);
         patientList.add(patient1);
         patientList.add(patient2);
         patientList.add(patient3);
@@ -30,14 +30,6 @@ public class main {
         Medicine m2 = new Pill("lacoste");
         Medicine m3 = new Serum("lace");
         Medicine m4 = new Serum("lad");
-        
-
-        
-
-        Medicine m1 = new pill("paroş");
-        Medicine m2 = new pill("lacoste");
-        Medicine m3 = new serum("lace");
-        Medicine m4 = new serum("lad");
 
         Nurses melike = new Scooters();
 
@@ -91,7 +83,7 @@ public class main {
                 else if(a == 4){ //i not decided yet
 
                 }
-                System.out.println(count/1000000000 + " days passed");
+                System.out.println((int)(count/(Math.pow(10,9))) + " days passed");
             }
         }       
     }

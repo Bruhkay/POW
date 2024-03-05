@@ -6,6 +6,4 @@ public class Scooters extends Nurses {
     public Scooters(){
         super();
     }
-
-    
 }

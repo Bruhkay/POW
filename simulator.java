@@ -6,7 +6,7 @@ import grid.Stationary;
 
 import java.util.ArrayList;
 
-public class simulator {
+public class Simulator {
     
     public static void main(String[] args) {
         

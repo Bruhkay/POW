@@ -30,7 +30,10 @@ public class Nurses extends Mobile {
     public void giveMedicine(Medicine x){
         this.baggage.remove(x);
     }
-    @Override
+
+    /**
+     * Prints all medicines located in the baggage 
+     */
     public String toString() {
         String result = "";
         for (Medicine x : baggage){

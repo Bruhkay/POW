@@ -259,7 +259,7 @@ public class City {
                         } catch (Exception e) {
                             primaryRow.append("---");
                         }
-                        // WE CAN WRİTE THE TRAFFIC IN THE MİDDLE WİTH f"-{road.traffic}-"
+                        // WE CAN WRITE THE TRAFFIC IN THE MIDDLE WITH f"-{road.traffic}-"
                     }
                     
                     // draw the road downward
