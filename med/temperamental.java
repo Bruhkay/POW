@@ -1,11 +1,14 @@
+/**
+ * This is temperamental class.
+ * Those pills are prescribed for temporal situations. (eg: antibiotics for flu)
+ *                                                                                                  Vans(?) will cater them
+ */
 
 package med;
 import entity.*;
 public class Temperamental extends Medicine {
     protected String name;
     protected static int ID = 0;
-
-    
 
     
     public Temperamental(String name){

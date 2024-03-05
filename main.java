@@ -86,5 +86,11 @@ public class main {
                 System.out.println((int)(count/(Math.pow(10,9))) + " days passed");
             }
         }       
+
+        System.out.println("\nResult: ");
+        for(int i = 0; i < patientList.size();  i++)
+    {
+        System.out.println( patientList.get(i).getPatientsName() + patientList.get(i).getCart());
+    }
     }
 }

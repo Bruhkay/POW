@@ -180,11 +180,23 @@ public class City {
         return null; // No path found
     }
 
+    /**
+     * Cslculate the total road between first-last road by taking absolute values of roads' x, y coordinates.
+     * @param node first road
+     * @param endNode last road
+     * @return total disance as a count of road
+     */
     private static int calculateHeuristic(Road node, Road endNode) {
         // Manhattan distance heuristic
         return Math.abs(node.getCoords()[0] - endNode.getCoords()[0]) + Math.abs(node.getCoords()[1] - endNode.getCoords()[1]);
     }
 
+    /**
+     * 
+     * @param changed mobile which gonna be located to specific coordiinate (road)
+     * @param x road's x-coordinate
+     * @param y road's y-coordinate
+     */
     public void setRoad(Mobile changed, int x, int y){
         roads[x][y].setContined(changed);
         changed.setContainedIn(roads[x][y]);
@@ -247,7 +259,7 @@ public class City {
         return roads[x][y];
     }
 
-    /**
+/**
  * Creates a map of the city.
  * @param showTraffic Whether to display traffic information.
  * @return The map of the city.

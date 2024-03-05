@@ -25,6 +25,10 @@ public class Patients extends grid.Stationary {
     public int getCartSize(){
         return cart.size();
     }
+    
+    /**
+     * Make cart empty when patients purchase all their medicines
+     */
     public void setCartNull(){
         this.cart = new ArrayList<Medicine>();
     }

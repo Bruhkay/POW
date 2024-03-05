@@ -15,10 +15,18 @@ public abstract class Mobile extends Entity {
     // Burkay affet
     Road containedIn;
 
+    /**
+     * Gives the specific road which mobile (nurse, scooter, van) locates.
+     * @return road
+     */
     public Road getCurrentRoad(){
         return this.containedIn;
     }
 
+    /**
+     * Put mobile to the given road
+     * @param containedIn road
+     */
     public void setContainedIn(Road containedIn) {
         this.containedIn = containedIn;
     }
