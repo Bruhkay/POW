@@ -3,7 +3,7 @@ public class Vans extends Nurses {
     
     final protected int speed = 3;
 
-    public Vans(){
-        super();
+    public Vans(String name){
+        super(name);
     }
 }

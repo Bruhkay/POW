@@ -3,7 +3,7 @@ public class Scooters extends Nurses {
     
     final protected int speed = 5;
 
-    public Scooters(){
-        super();
+    public Scooters(String name){
+        super(name);
     }
 }

@@ -293,7 +293,7 @@ public String viewMap(boolean showTraffic){
             if( roads[i][j] != null){
                 // displaying vehicle
                 if(roads[i][j].getContained() == null){
-                    if(roads[i][j].getWasCrossed()) primaryRow.append(" O ");
+                    if(roads[i][j].getWasCrossed()) primaryRow.append(" 0 ");
                     else primaryRow.append(" . ");
                 }
                 else if(roads[i][j].getContained() instanceof Vans){

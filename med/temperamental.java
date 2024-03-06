@@ -8,7 +8,7 @@ package med;
 import entity.*;
 public class Temperamental extends Medicine {
     protected String name;
-    protected static int ID = 0;
+    protected int ID;
 
     
     public Temperamental(String name){
@@ -18,11 +18,11 @@ public class Temperamental extends Medicine {
     }
     
     public String getName() {
-        return name;
+        return name + " "+ ID;
     }
     @Override
     public String toString() {
-        return this.name + this.ID;
+        return getName();
     }
     
 

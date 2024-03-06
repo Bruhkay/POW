@@ -24,4 +24,7 @@ public abstract class Medicine {
     public void setPrice(double price){
         this.price = price;
     }
+    public static int getID() {
+        return ID;
+    }
 }

@@ -7,6 +7,15 @@ import med.Medicine;
 public class Nurses extends Mobile {
     
     protected ArrayList<Medicine> baggage = new ArrayList<Medicine>();
+    protected String name;
+
+    Nurses(String name){
+        this.name = name;
+
+    }
+    public String getName() {
+        return name;
+    }
     
     /**
      * Give all medicines stored in baggage
@@ -20,8 +29,8 @@ public class Nurses extends Mobile {
      * Nurse added new medine to baggage
      * @param x added medicine
      */
-    public void addToBaggage(Medicine x) {
-        this.baggage.add(x);
+    public void addToBaggage(ArrayList<Medicine> x) {
+        this.baggage = x;
     }
     /**
      * When nurse deliver medicine to patient baggage update its current medicines
