@@ -17,8 +17,17 @@ public class Road {
     Stationary entrenceOf = null;
     boolean isThereRoad; //if there is no road there might be a stationary
     int[] traffic = {1,1};
+    boolean wasCrossed = false;
 
     // melike boolean, constructor içine bina alma ve getter setter
+
+    public boolean getWasCrossed() {
+        return wasCrossed;
+    }
+
+    public void setWasCrossed(boolean wasCrossed) {
+        this.wasCrossed = wasCrossed;
+    }
 
     public int[] getTraffic() {
         return traffic;
@@ -26,7 +35,7 @@ public class Road {
 
     public void setTraffic(int[] traffic) {
         int max = 100;
-        int min = 0;
+        int min = 1;
 
         // setting right traffic
         if( traffic[0] < min){
@@ -72,6 +81,8 @@ public class Road {
         coordinates[0] = x;
         coordinates[1] = y;
         this.isThereRoad = isThereRoad;
+        int[] initTraffic = {(int) (Math.random() * 6)+ 1, (int) (Math.random() * 6) +1 };
+        setTraffic(initTraffic);
     }
 
     public Road(int x, int y){
@@ -80,6 +91,9 @@ public class Road {
         coordinates[1] = y;
 
         this.contained = null;
+
+        int[] initTraffic = {(int) (Math.random() * 6) +1, (int) (Math.random() * 6) + 1};
+        setTraffic(initTraffic);
     }
 
     //getter methods

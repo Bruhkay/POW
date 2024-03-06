@@ -126,9 +126,13 @@ public class City {
                 Road node = current;
                 while (node != null) {
                     path.add(node);
+
                     // to show the way taken
-                    int[] a = {0,0};
-                    node.setTraffic(a);
+                    /* int[] a = {0,0};
+                    node.setTraffic(a); */
+                    node.setWasCrossed(true);
+
+
                     node = node.getParent();
                 }
                 Collections.reverse(path);
@@ -289,7 +293,8 @@ public String viewMap(boolean showTraffic){
             if( roads[i][j] != null){
                 // displaying vehicle
                 if(roads[i][j].getContained() == null){
-                    primaryRow.append(" . ");
+                    if(roads[i][j].getWasCrossed()) primaryRow.append(" O ");
+                    else primaryRow.append(" . ");
                 }
                 else if(roads[i][j].getContained() instanceof Vans){
                     primaryRow.append(" V ");
@@ -340,7 +345,7 @@ public String viewMap(boolean showTraffic){
                 if(j < this.height && i < this.width)
                 {    // draw the stationary
                     if( roads[i][j].getEnterenceOf() == null){
-                        secondaryRow.append(" . ");
+                        secondaryRow.append(" * ");
                     }
                     else if( roads[i][j].getEnterenceOf() instanceof Pharmacy){
                         secondaryRow.append(" M ");
