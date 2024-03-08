@@ -8,9 +8,12 @@
 package med;
 public class Mandatory extends Medicine{
     protected String name ;
+    protected int ID;
 
     public Mandatory(String name){
         this.name = name;
+        this.ID = super.ID;
+        super.ID++;
     }
 
     public String getName() {
@@ -18,6 +21,6 @@ public class Mandatory extends Medicine{
     }
     @Override
     public String toString() {
-        return this.name;
+        return this.name+ "" + this.ID;
     }
 }
