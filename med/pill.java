@@ -7,10 +7,16 @@ import java.io.IOException;
 public class Pill extends Medicine{
 
     public static ArrayList AllPills;
+    public static ArrayList OTCpills;
+    public static ArrayList prescribedPills;
      
     public Pill(String name, String description){
-        this.name = name;
+        super.name = name;
         this.ID = ++super.ID;
+        AllPills = new ArrayList<>();
+        OTCpills = new ArrayList<>();
+        prescribedPills = new ArrayList<>();
+        this.fillPills();
     }
 
     public void fillPills(){
@@ -25,6 +31,7 @@ public class Pill extends Medicine{
                 
                 // adds the pill into the big pile
                 this.AllPills.add(fields);
+                this.OTCpills.add(fields);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -39,6 +46,7 @@ public class Pill extends Medicine{
                 
                 // adds the pill into the big pile
                 this.AllPills.add(fields);
+                this.prescribedPills.add(fields);
             }
         } catch (IOException e) {
             e.printStackTrace();
