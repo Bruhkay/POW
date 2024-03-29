@@ -3,14 +3,16 @@ import java.util.Random;
 import java.util.random.*;
 
 import entity.mobile.physcian.Nurses;
-import entity.mobile.physcian.Scooters;
+import entity.mobile.physcian.Scooter;
 import entity.stationary.patients.Acut;
 import entity.stationary.patients.Patients;
 import entity.stationary.patients.Periodic;
 import med.*;
 
-public class main {
-    public static void main(String[] args) {
+public class main 
+{
+    public static void main(String[] args) 
+    {
         Random rn = new Random();
         ArrayList<Patients> patientList = new ArrayList<Patients>();
         ArrayList<Nurses> nurseList = new ArrayList<Nurses>();
@@ -27,8 +29,8 @@ public class main {
         patientList.add(patient3);
 
         
-        Nurses melike = new Scooters("melike");
-        Nurses atakan = new Scooters("atakan");
+        Nurses melike = new Scooter("melike");
+        Nurses atakan = new Scooter("atakan");
         nurseList.add(melike);
         nurseList.add(atakan);
         /*
@@ -46,8 +48,10 @@ public class main {
         */
 
         long count = 0; //this variable will increase each second. this will holds the running time by nanoseconds. And will updated at every 1 second.
-        while(count < Math.pow(10, 9) * executeDuration){
-            if(count < System.nanoTime()-start){
+        while(count < Math.pow(10, 9) * executeDuration)
+        {
+            if(count < System.nanoTime()-start)
+            {
                 count += Math.pow(10,9) * updateFreq;
 
                 int a = rn.nextInt(3); //this will choose operation randomly such as adding Medicine to cart or buying Medicine
@@ -59,11 +63,12 @@ public class main {
                     //i can add a for loop to adjust time amount for waiting
                 }
 
-                else if(a == 1){ // for adding health product to baggage randomly
+                else if(a == 1){ 
+                    // for adding health product to baggage randomly
                     
                     int randomMedicine = rn.nextInt(14);
 
-                    if(randomMedicine == 0){
+                    /*if(randomMedicine == 0){
                         Temperamental m = new Pill("parol");
                         randomPatient.addMedicine(m);
                     }
@@ -132,7 +137,7 @@ public class main {
                         Temperamental m = new Pill("tylohot");
                         randomPatient.addMedicine(m);
                         System.out.println(randomPatient.getPatientsName() + " added "+m.getName()+ " to cart.");
-                    }
+                    }*/
                 }
 
                 else if(a == 2){ //this could be buying option
@@ -158,8 +163,9 @@ public class main {
 
         System.out.println("\nResult: ");
         for(int i = 0; i < patientList.size();  i++)
-    {
+        {
         System.out.println( patientList.get(i).getPatientsName() + patientList.get(i).getCart());
-    }
+        }
+    
     }
 }
