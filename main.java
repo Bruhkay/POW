@@ -166,6 +166,5 @@ public class main
         {
         System.out.println( patientList.get(i).getPatientsName() + patientList.get(i).getCart());
         }
-    
     }
 }
