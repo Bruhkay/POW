@@ -1,14 +1,15 @@
 import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class PillsPage extends Application{
+public class YesNoQuesQDT extends Application{
     public void start(Stage primaryStage) throws IOException{
        
-        FXMLLoader fxml = new FXMLLoader(PillsPage.class.getResource("PillsPage.fxml"));
-        Scene scene = new Scene(fxml.load(),1080,720);
+        FXMLLoader fxml = new FXMLLoader(YesNoQuesQDT.class.getResource("YesNoQuesQDT.fxml"));
+        Scene scene = new Scene(fxml.load(),1080,1920);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -16,3 +17,4 @@ public class PillsPage extends Application{
         launch(args);
     }
 }
+
