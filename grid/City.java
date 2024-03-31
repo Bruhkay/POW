@@ -4,7 +4,7 @@ import java.util.*;
 
 import entity.mobile.*;
 import entity.mobile.physcian.Nurses;
-import entity.mobile.physcian.Vans;
+import entity.mobile.physcian.Van;
 import entity.stationary.*;
 import entity.stationary.patients.Periodic;
 
@@ -296,7 +296,7 @@ public String viewMap(boolean showTraffic){
                     if(roads[i][j].getWasCrossed()) primaryRow.append(" 0 ");
                     else primaryRow.append(" . ");
                 }
-                else if(roads[i][j].getContained() instanceof Vans){
+                else if(roads[i][j].getContained() instanceof Van){
                     primaryRow.append(" V ");
                 }
                 else{

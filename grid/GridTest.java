@@ -5,15 +5,15 @@ import java.util.List;
 
 import entity.mobile.Mobile;
 import entity.mobile.physcian.Nurses;
-import entity.mobile.physcian.Vans;
+import entity.mobile.physcian.Van;
 
 public class GridTest {
     public static void main(String[] args) {
 
         City city = new City(10, 10);
-        Mobile a = new Vans("mert");
+        Mobile a = new Van("mert");
         city.setRoad(a, 0,0);
-        Mobile v = new Vans("atakanisko");
+        Mobile v = new Van("atakanisko");
         city.setRoad(a, 0,0);
         Stationary b = new Stationary(9,9);
         city.buildCustomeStationary(9,9, 1,1, b);     //We already passed the coordinates of stationary by using "b". Not need!!!!!!!!!!?
