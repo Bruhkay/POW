@@ -6,20 +6,28 @@ import java.io.IOException;
 
 public class Pill extends Medicine{
 
-    public static ArrayList AllPills;
+    public static ArrayList<String[]> AllPills;
     public static ArrayList OTCpills;
     public static ArrayList prescribedPills;
-     
-    public Pill(String name, String description){
-        super.name = name;
-        this.ID = ++super.ID;
-        AllPills = new ArrayList<>();
-        OTCpills = new ArrayList<>();
-        prescribedPills = new ArrayList<>();
-        this.fillPills();
+    public int pillID;
+
+    public Pill(int IDnumber){
+        super(AllPills.get(IDnumber)[0], AllPills.get(IDnumber)[1]);
+        this.pillID = IDnumber;
+    }
+
+    public Pill(int IDnumber, int cyclesOfTaking, int[] takeingFrequency){
+        super(AllPills.get(IDnumber)[0], AllPills.get(IDnumber)[1]);
+        this.pillID = IDnumber;
+        super.setCyclesOfTaking(cyclesOfTaking);
+        super.setConsumeFreq(takeingFrequency);
     }
 
     public void fillPills(){
+        AllPills = new ArrayList<>();
+        OTCpills = new ArrayList<>();
+        prescribedPills = new ArrayList<>();
+
         String csvFile = "over_the_counter.csv";
         String line = "";
         String csvSplitBy = ",";
@@ -51,6 +59,14 @@ public class Pill extends Medicine{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+     
+    public int getPillID() {
+        return pillID;
+    }
+
+    public void setPillID(int pillID) {
+        this.pillID = pillID;
     }
 
 }

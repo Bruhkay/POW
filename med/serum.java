@@ -1,6 +1,7 @@
 package med;
-public class Serum extends Temperamental {
-    public Serum( String name ){
-        super(name);
+public class Serum extends Medicine{
+    public Serum(){
+        super("Serum", "A serum to rehydrate and replenish your electrolytes.");
+        setCyclesOfTaking(1);
     }
 }
