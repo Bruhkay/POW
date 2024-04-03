@@ -264,7 +264,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label text="Sude Özden" GridPane.columnIndex="1">
+            <Label text="Mert Suci" GridPane.columnIndex="1">
                <font>
                   <Font size="24.0" />
                </font>
@@ -274,7 +274,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label text="Yenimahalle" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label text="Bilkent University" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="24.0" />
                </font>

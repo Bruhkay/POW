@@ -232,11 +232,6 @@
             <Image url="@../../../cs%20hw/POW/images/9.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="81.0" fitWidth="76.0" layoutX="18.0" layoutY="311.0">
-         <image>
-            <Image url="@../../../cs%20hw/POW/images/Nurse%20Icon.png" />
-         </image>
-      </ImageView>
       <Label alignment="CENTER" layoutX="515.0" layoutY="274.0" prefHeight="55.0" prefWidth="356.0" style="-fx-background-color: #FFBD59; -fx-border-color: black;" text="Personal Information">
          <font>
             <Font size="36.0" />
@@ -299,6 +294,11 @@
       <ImageView fitHeight="796.0" fitWidth="762.0" layoutX="868.0" layoutY="206.0">
          <image>
             <Image url="@../../../cs%20hw/POW/images/Nurse%20and%20Old%20Lady.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="79.0" fitWidth="83.0" layoutX="16.0" layoutY="311.0">
+         <image>
+            <Image url="@../../../cs%20hw/POW/images/iconmap.png" />
          </image>
       </ImageView>
    </children>
