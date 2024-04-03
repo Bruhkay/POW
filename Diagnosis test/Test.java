@@ -7,29 +7,32 @@ public class Test extends JFrame
 {
     //Constant variables
     final private int SYMPTOMS_NUMBER = 8;
+    final private int FRAME_WIDTH = 1000;
+    final private int FRAME_HEIGHT = 1000;
 
     //Instance variables
     private JPanel site;
     private JPanel symptomsPanel;
     private JPanel questionsPanel;
+    private JPanel solutionsPanel;
     private JPanel yesNoPanel;
     private JLabel result;
     private ArrayList<Integer> qNumbers;
     private ArrayList<Integer> sNumbers;
-    private JPanel solutionsPanel;
+    private ArrayList<Integer> simplifiedQ;
+    private ArrayList<Integer> simplifiedS;
     private ArrayList<JCheckBox> symptoms;
     private static ArrayList <Question> questions;
     private Symptom option;
-    private ArrayList<Integer> simplifiedQ;
-    private ArrayList<Integer> simplifiedS;
     
+    //Constructor
     public Test()
     {
         questionsPanel = new JPanel();
         solutionsPanel = new JPanel();
         yesNoPanel = new JPanel();
-        option = new Symptom(this);
         result = new JLabel();
+        option = new Symptom(); 
 
         symptoms = new ArrayList<JCheckBox>();
         questions = new ArrayList<Question>();
@@ -37,11 +40,11 @@ public class Test extends JFrame
         simplifiedS = new ArrayList<Integer>();
 
         site = new JPanel();
-        site.setLayout(new GridLayout(3,1));
+        site.setLayout(new GridLayout(3,1)); //symptom-question-solution
         symptomsPanel = createSymptomsPanel();
-        site.add(symptomsPanel );
+        site.add(symptomsPanel ); //placed in first grid location
         add(site);
-        setSize(1000,1000);
+        setSize(FRAME_WIDTH, FRAME_HEIGHT);
     }
 
     /**
@@ -51,28 +54,32 @@ public class Test extends JFrame
     public JPanel createSymptomsPanel()
     {
         JPanel p = new JPanel();
-        p.setLayout(new BorderLayout()); // Symptom panel. Includes checkboxes, button
+        p.setLayout(new BorderLayout()); //Symptom panel. Includes checkboxes, next button
         JPanel chose = listSymptoms();
-        p.add(chose, BorderLayout.CENTER);
+        p.add(chose, BorderLayout.CENTER); //place checkbox to the center
 
         JButton done = new JButton("Next");
         ActionListener listener = new FirstListener();
         done.addActionListener(listener);
-        p.add(done, BorderLayout.SOUTH);
+        p.add(done, BorderLayout.SOUTH); //place button to the south (under symptoms)
         return p;
     
     }
 
+    /**
+     * Inner class of first next button listener (symptoms -> questions)
+     */
     class FirstListener implements ActionListener
     {
         public void actionPerformed(ActionEvent event)
         {
             qNumbers = new ArrayList<Integer>();
             questions = new ArrayList<Question>();
-            site.remove(questionsPanel);
+            site.remove(questionsPanel); //Remove both in order to manage user's change during test
             site.remove(solutionsPanel);
             yesNoPanel = new JPanel();
             solutionsPanel = new JPanel();
+
             for(int i = 0; i < symptoms.size(); i++)
             {
                 if(symptoms.get(i).isSelected() )
@@ -126,6 +133,8 @@ public class Test extends JFrame
                         qNumbers.add(4);
                         qNumbers.add(13);
                     }
+
+                    //Add here if you have additional symptom. And assign relevant questions.
                 }
             }
 
@@ -135,39 +144,46 @@ public class Test extends JFrame
             for(int i = 0; i < simplifiedQ.size(); i++)
             {
                 Question q = new Question(simplifiedQ.get(i));
-                questions.add(q);
-                yesNoPanel.add(q.getOneQ());
+                questions.add(q); //add questions to ArrayList
+                yesNoPanel.add(q.getOneQ()); // add question and its yes/no buttons to panel
             }
 
             questionsPanel = createQuestionPanel();
             site.add(questionsPanel);
-            paintComponents(getGraphics());
+            paintComponents(getGraphics()); //refresh page
         }
     }
 
+    /**
+     * Create panel containing questions, its yes/no buttons and next button at the end.
+     * @return panel
+     */
     public JPanel createQuestionPanel()
     {
-        JPanel p = new JPanel();
+        JPanel p = new JPanel(); 
         p.setLayout(new BorderLayout());
-        p.add(yesNoPanel, BorderLayout.CENTER);
-        JButton done = new JButton("Continue");
+        p.add(yesNoPanel, BorderLayout.CENTER); // questions and its yes/no buttons
+        JButton done = new JButton("Next");
         
         ActionListener listener = new SecondListener();
         done.addActionListener(listener);
-        p.add(done, BorderLayout.SOUTH);
+        p.add(done, BorderLayout.SOUTH); // "next" button to see recommendation panel
         return p;
     }
 
+    /**
+     * Inner class for second next button (questiion -> solution)
+     */
     class SecondListener implements ActionListener
     {
         public void actionPerformed(ActionEvent event)
         {
-            //solutionsPanel.remove(result);
             sNumbers = new ArrayList<Integer>();
-            site.remove(solutionsPanel);
+            site.remove(solutionsPanel); //Remove it in order to manage user's change during test
             solutionsPanel = new JPanel();
-            String reco = "Reccomendations: ";
+            String reco = "Recomendations: " + " ";
             result = new JLabel(reco);
+
             for(int i = 0; i < simplifiedQ.size(); i++ )
             {
                 if(questions.get(i).getYesButton().isSelected())
@@ -210,7 +226,6 @@ public class Test extends JFrame
                     }
                     else if((questions.get(i).getQ()).equals("Is your painful area swollen?"))
                     {
-                        System.out.println("say");
                         sNumbers.add(4);
                     }
                     else if((questions.get(i).getQ()).equals("Have you come into contact with an allergen?"))
@@ -239,24 +254,30 @@ public class Test extends JFrame
                         sNumbers.add(10);
                         sNumbers.add(13);
                     } 
+
+                    // Add your question and its possible solution here. Add this question under the to relevant symptom.
                 }
             }
 
-            //System.out.println(sNumbers);
             simplifiedS = option.simplifyList(sNumbers);
-            //System.out.println(simplifiedS);
+
             for(int i = 0; i < simplifiedS.size(); i++)
             {
                 Solution s = new Solution(simplifiedS.get(i));
-                reco += s.getSolution();
+                reco += s.getSolution() + " ";
             }
+
             result.setText(reco);
             solutionsPanel.add(result);
             site.add(solutionsPanel);
-            paintComponents(getGraphics());
+            paintComponents(getGraphics()); // refresh page
         }
     }
 
+    /**
+     * list all symptoms with checkboxes
+     * @return panel
+     */
     public JPanel listSymptoms()
     {
         JPanel checkBoxes = new JPanel();
@@ -266,15 +287,18 @@ public class Test extends JFrame
             String title = option.setSymptomName(i);
             JCheckBox s = new JCheckBox(title);
 
-            checkBoxes.add(s);
-            symptoms.add(s);
+            checkBoxes.add(s); //add checboxes to the panel to be displayed
+            symptoms.add(s); //ArrayList<JcehckBox> collects all symptoms checkboxes
         }
         return checkBoxes;
     }
 
+    /**
+     * Gives main panel which contains 3 parts symptoms- questions- solutions
+     * @return panel
+     */
     public JPanel getSite()
     {
         return site;
     }
-
 }

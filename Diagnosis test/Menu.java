@@ -8,10 +8,12 @@ import java.awt.event.*;
 
 public class Menu extends JFrame
 {
+    //Instance variables
     private JPanel menu;
     private JPanel title;
     private JButton start;
 
+    //Constructor
     public Menu()
     {
         title = createTitle();

@@ -23,11 +23,20 @@ import java.awt.*;
 
 public class Question
 {
+    //Instance variables
     private JPanel qPanel;
     private String question;
     private JRadioButton yes;
     private JRadioButton no;
 
+    //Constructor
+    /**
+     * eaxh number represents specific question
+     * You can add extra questions. 
+     * Don't forget to add its name here 
+     * Assign new question to relevant symptoms. (test class - firstListener)
+     * It should compile according to new, updated questions.
+     */
     public Question(int number)
     {
         if(number == 1) {question = "Have you had too much caffeine or alcohol lately?";}
@@ -43,6 +52,9 @@ public class Question
         else if(number == 11) {question = "Is your asthma triggered?";}
         else if(number == 12) {question = "Is there dryness in your throat?";}
         else if(number == 13) {question = "Did you catch a cold?";}
+        else if(number == 14) {question = "DENEME";}
+
+        //Add your possible question
 
         qPanel = creatOneQPanel();
     }

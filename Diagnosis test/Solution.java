@@ -24,8 +24,10 @@
 
 public class Solution 
 {
+    //Instance variables
     private String solution;
 
+    //Costructor
     public Solution(int number)
     {
         if(number == 1) {solution = "Take any painkillers you have used recently.";}
@@ -44,7 +46,6 @@ public class Solution
         else if(number == 14) {solution = "Take off your clothes.";}
         else if(number == 15) {solution = "Take your asthma medicine.";}
         else if(number == 16) {solution = "Drink hot liquid.";}
-        
     }
 
     /**
@@ -54,6 +55,5 @@ public class Solution
     public String getSolution()
     {
         return solution;
-    }
-    
+    } 
 }

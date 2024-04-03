@@ -22,7 +22,7 @@ public class Symptom extends JCheckBox
     private String symptomName;
 
     //Constructor
-    public Symptom(Test reference)
+    public Symptom()
     {
         symptomName = "";
     }
@@ -73,6 +73,12 @@ public class Symptom extends JCheckBox
         return symptomName;
     }
 
+    /**
+     * Simplfy number list, remove repetetive numbers from list
+     * In order not to print same question or recommendation.
+     * @param list arraylist contains repetative numbers
+     * @return arrayList contains ecah number once
+     */
     public ArrayList<Integer> simplifyList(ArrayList<Integer> list)
     {
         sort(list);
@@ -87,8 +93,12 @@ public class Symptom extends JCheckBox
             }
         }
         return simplified;
-
     }
+
+    /**
+     * List numbers in ascending order
+     * @param list number list
+     */
     public void sort(ArrayList<Integer> list)
     {
         for(int i = 0; i < list.size() - 1; i++)
@@ -104,6 +114,11 @@ public class Symptom extends JCheckBox
             }
         }
     }
+
+    /**
+     * Give symptom name
+     * @return symoptom name
+     */
     public String getSymptomName()
     {
         return symptomName;

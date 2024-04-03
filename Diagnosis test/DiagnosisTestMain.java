@@ -1,5 +1,5 @@
 /**
- * This is a Main class. It creates main frame and calls relevant claseses.
+ * This is a Diagnosis Test Main class. It creates main frame and calls relevant claseses.
  */
 import javax.swing.*;
 public class DiagnosisTestMain 
