@@ -2,7 +2,7 @@
  * This is a Main class. It creates main frame and calls relevant claseses.
  */
 import javax.swing.*;
-public class Main 
+public class DiagnosisTestMain 
 {
     public static void main(String[] args)
     {
