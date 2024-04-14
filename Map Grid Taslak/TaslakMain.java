@@ -1,6 +1,6 @@
 import javax.swing.JFrame;
 
-public class Main 
+public class TaslakMain 
 {
     public static void main(String[] args)
     {
