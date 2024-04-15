@@ -17,7 +17,10 @@ public class GridFrame extends JFrame
 
     public GridFrame()
     {
+        
         panel = new JPanel();
+        
+        //panel.set
         panel.setLayout(new BorderLayout());
         b = new JButton("Move");
         panel.add(b, BorderLayout.SOUTH);
@@ -25,6 +28,7 @@ public class GridFrame extends JFrame
         panel.add(girdPanel, BorderLayout.CENTER);
         add(panel);
         setSize(FRAME_WIDTH, FRAME_HEIGTH);
+        setResizable(false);
         setVisible(true);
     }
 

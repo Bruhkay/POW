@@ -56,7 +56,7 @@ public class Van
      */
     public void draw(Graphics g)
     {
-        g.setColor(Color.RED);
+        g.setColor(Color.CYAN);
         g.fillOval(x, y, RADIUS * 2, RADIUS * 2);
     }
 

@@ -99,6 +99,10 @@ public class GridPanel extends JComponent
 
     public void paintComponent(Graphics g)
     {
+        ImageIcon imageIcon = new ImageIcon("C:\\Users\\burka\\Desktop\\20240412_173426.jpg");
+        Image image = imageIcon.getImage();
+        g.drawImage(image, 9, 13, 650, 650, this);
+        
         for(int j = 0; j < homes.size(); j++)
         {
             homes.get(j).draw(g);
