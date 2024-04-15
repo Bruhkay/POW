@@ -33,7 +33,7 @@ public class Simulator {
         
         int a = rn.nextInt(0,stationaries.size() - 1);
             
-        Order newOrder = new Order(deneme, stationaries.get(a).getCoordinates()); 
+        //Order newOrder = new Order(deneme, stationaries.get(a).getCoordinates()); 
         
 
 
